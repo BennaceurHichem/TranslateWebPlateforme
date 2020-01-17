@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b44b0976-416b-4237-b287-b8548207e2a8" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="ProjectId" id="1WUmqwcZ0cWCtzt3lpeDEPL3Tfk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b44b0976-416b-4237-b287-b8548207e2a8" name="Default Changelist" comment="" />
+      <created>1579212819989</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579212819989</updated>
+      <workItem from="1579212821201" duration="19293000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="295" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579269701758">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="295" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.689@0.0.1280.689" timestamp="1579269701758" />
+    <state x="335" y="77" width="739" height="606" key="find.popup" timestamp="1579275348302">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="335" y="77" width="739" height="606" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1579275348302" />
+    <state x="303" y="10" key="search.everywhere.popup" timestamp="1579266931831">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="303" y="10" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1579266931831" />
+  </component>
+</project>
