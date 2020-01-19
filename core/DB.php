@@ -135,7 +135,9 @@ class DB {
      * @return array|bool
      */
     public function findFirst($table, $params=[], $class=false) {
+
     if($this->_read($table, $params,$class)) {
+
       return $this->first();
     }
     return false;

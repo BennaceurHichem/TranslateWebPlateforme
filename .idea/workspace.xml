@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b44b0976-416b-4237-b287-b8548207e2a8" name="Default Changelist" comment="" />
+    <list default="true" id="b44b0976-416b-4237-b287-b8548207e2a8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/ContactsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ContactsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/menu_acl.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/menu_acl.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Contacts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Contacts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/default.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/default.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/main_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/main_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/register/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/register/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/register/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/register/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Cookie.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Cookie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/DB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/FH.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/FH.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Session.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,7 +35,11 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1WUmqwcZ0cWCtzt3lpeDEPL3Tfk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -20,8 +47,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/css" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\parhamcurtis\css" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -45,7 +78,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579212819989</updated>
-      <workItem from="1579212821201" duration="19293000" />
+      <workItem from="1579212821201" duration="26532000" />
+      <workItem from="1579338878854" duration="28609000" />
+      <workItem from="1579424479380" duration="2526000" />
     </task>
     <servers />
   </component>
@@ -53,14 +88,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="371" y="101" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579357229107">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="371" y="101" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1579357229107" />
+    <state x="336" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1579424959244">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="336" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1579424959244" />
     <state x="295" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579269701758">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="295" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.689@0.0.1280.689" timestamp="1579269701758" />
-    <state x="335" y="77" width="739" height="606" key="find.popup" timestamp="1579275348302">
+    <state x="335" y="77" width="739" height="606" key="find.popup" timestamp="1579383395314">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="335" y="77" width="739" height="606" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1579275348302" />
+    <state x="335" y="77" width="739" height="606" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1579383395314" />
+    <state x="297" y="155" key="run.anything.popup" timestamp="1579356681020">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="297" y="155" key="run.anything.popup/0.0.1280.689@0.0.1280.689" timestamp="1579356681020" />
     <state x="303" y="10" key="search.everywhere.popup" timestamp="1579266931831">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

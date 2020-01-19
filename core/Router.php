@@ -17,7 +17,7 @@
       $action_name = (isset($url[0]) && $url[0] != '')? $url[0] : 'index';
       array_shift($url);
 
-      //acl check
+      //acl check permission
       $grantAccess = self::hasAccess($controller_name, $action_name);
 
       if(!$grantAccess) {
@@ -60,6 +60,7 @@
       $grantAccess = false;
 
       if(Session::exists(CURRENT_USER_SESSION_NAME)) {
+          //if the user is logged in
         $current_user_acls[] = "LoggedIn";
         foreach(Users::currentUser()->acls() as $a) {
           $current_user_acls[] = $a;

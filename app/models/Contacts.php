@@ -16,10 +16,12 @@ class Contacts extends Model {
   }
 
   public function validator(){
-    $this->runValidation(new RequiredValidator($this,['field'=>'fname','msg'=>'First Name is required.']));
-    $this->runValidation(new MaxValidator($this,['field'=>'fname','msg'=>'First Name must be less than 156 characters.','rule'=>155]));
-    $this->runValidation(new RequiredValidator($this,['field'=>'lname','msg'=>'Last Name is required.']));
-    $this->runValidation(new MaxValidator($this,['field'=>'lname','msg'=>'Last Name must be less than 156 characters.','rule'=>155]));
+    $this->runValidation(new RequiredValidator($this,['field'=>'prenom','msg'=>'First Name is required.']));
+    $this->runValidation(new MaxValidator($this,['field'=>'prenom','msg'=>'First Name must be less than 156 characters.','rule'=>155]));
+    $this->runValidation(new RequiredValidator($this,['field'=>'nom','msg'=>'Last Name is required.']));
+      $this->runValidation(new RequiredValidator($this,['field'=>'numero','msg'=>'veullez entrez un numeros valide']));
+
+    $this->runValidation(new MaxValidator($this,['field'=>'nom','msg'=>'Last Name must be less than 156 characters.','rule'=>155]));
   }
 
   public function findAllByUserId($user_id, $params=[]){

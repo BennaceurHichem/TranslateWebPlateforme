@@ -15,7 +15,7 @@ class ContactsController extends Controller {
   }
 
   public function indexAction(){
-    $contacts = $this->ContactsModel->findAllByUserId(Users::currentUser()->id,['order'=>'lname, fname']);
+    $contacts = $this->ContactsModel->findAllByUserId(Users::currentUser()->id,['order'=>'nom, prenom']);
     $this->view->contacts = $contacts;
     $this->view->render('contacts/index');
   }

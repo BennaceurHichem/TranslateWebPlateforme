@@ -22,6 +22,9 @@
       if(class_exists($modelPath)) {
         $this->{$model.'Model'} = new $modelPath();
       }
+      else{
+          die("ther is no model exists in the load_model");
+      }
     }
 
     public function jsonResponse($resp){

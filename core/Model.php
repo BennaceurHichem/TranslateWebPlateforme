@@ -32,14 +32,16 @@ class Model {
 
   public function find($params = []) {
     $params = $this->_softDeleteParams($params);
-    $resultsquery = $this->_db->find($this->_table, $params,get_class($this));
+    $resultsQuery = $this->_db->find($this->_table, $params,get_class($this));
     if(!$resultsQuery) return [];
     return $resultsQuery;
   }
 
   public function findFirst($params = []) {
     $params = $this->_softDeleteParams($params);
+
     $resultQuery = $this->_db->findFirst($this->_table, $params,get_class($this));
+
     return $resultQuery;
   }
 
@@ -49,8 +51,10 @@ class Model {
 
   public function save() {
     $this->validator();
+       // die($this->_validates);
     if($this->_validates){
       $this->beforeSave();
+
       $fields = H::getObjectProperties($this);
       // determine whether to update or insert
       if(property_exists($this, 'id') && $this->id != '') {
@@ -63,6 +67,7 @@ class Model {
         return $save;
       }
     }
+
     return false;
   }
 
@@ -86,6 +91,8 @@ class Model {
     return $this->_db->delete($this->_table, $id);
   }
 
+
+  //interface of model to the DB
   public function query($sql, $bind=[]) {
     return $this->_db->query($sql, $bind);
   }
@@ -98,6 +105,8 @@ class Model {
     return $data;
   }
 
+
+  //assign values to any attribute of this ModelClass like,$_modelName,$table...
   public function assign($params) {
     if(!empty($params)) {
       foreach($params as $key => $val) {

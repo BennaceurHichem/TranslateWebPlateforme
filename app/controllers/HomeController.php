@@ -4,6 +4,8 @@
   use Core\H;
   use Core\DB;
   use App\Models\Users;
+  use Core\Router;
+  use Core\Session;
 
   class HomeController extends Controller {
 
@@ -13,6 +15,9 @@
 //we can add in parameter the values of parameters after action/
     public function indexAction() {
         $db = DB::getInstance();
+
+/*
+        echo Session::displayMsg();
 
       $userFields  = [
           'nom'=>'Bennaceur',
@@ -35,7 +40,7 @@
         die();
 
 
-
+*/
 
 
       $this->view->render('home/index');

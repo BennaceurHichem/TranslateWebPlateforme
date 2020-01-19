@@ -1,3 +1,7 @@
+
+<?php
+use Core\FH;
+?>
 <?php $this->setSiteTitle('Home'); ?>
 
 <?php $this->start('head'); ?>
@@ -33,7 +37,7 @@
 <?php $this->start('body'); ?>
 
 <header>
-    <!-- NavBar Code -->
+    <!-- NavBar Code
     <nav class="navbar navbar-expand-lg navbar-dark primary-color">
         <a class="navbar-brand" href="#">STRIKE</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -73,6 +77,7 @@
 
         </div>
     </nav>
+     -->
     <!-- NavBarCode end -->
 
 
@@ -283,61 +288,62 @@
 
             <section class="forms-section wow slideInRight" id="form1-div">
                 <h1 class="section-title">Veuillez Connectez </h1>
-                <div class="forms">
-                    <div class="form-wrapper is-active">
-                        <button type="button" class="switcher switcher-login">
-                            Connexion
-                            <span class="underline"></span>
-                        </button>
-                        <form class="form form-login" id="connexion_forme"  action="connexion_form.php">
-                            <fieldset>
-                                <legend>Please, enter your email and password for login.</legend>
-                                <div class="input-block">
-                                    <label for="login-email">E-mail</label>
-                                    <input id="login-email" name="email_connexion" type="email" required>
+                <!--      <div class="forms">
+                          <div class="form-wrapper is-active">
+                              <button type="button" class="switcher switcher-login">
+                                  Connexion
+                                  <span class="underline"></span>
+                              </button>
+                              <form class="form form-login" id="connexion_forme"  action="connexion_form.php">
+                                  <fieldset>
+                                      <legend>Please, enter your email and password for login.</legend>
+                                      <div class="input-block">
+                                          <label for="login-email">E-mail</label>
+                                          <input id="login-email" name="email_connexion" type="email" required>
 
-                                </div>
-                                <div class="input-block">
-                                    <label for="login-password">Password</label>
-                                    <input id="login-password" name="pass_connexion" type="password" required>
-                                </div>
-                            </fieldset>
-                            <button type="submit" name="submit_connexion_form" class="btn-login">Connexion</button>
-                        </form>
-                    </div>
-                    <div class="form-wrapper">
-                        <button type="button" class="switcher switcher-signup">
-                            Inscription
-                            <span class="underline"></span>
-                        </button>
-                        <form class="form form-signup" id="inscription_form" action="inscription_form.php">
-                            <fieldset>
-                                <legend>Please, enter your email, password and password confirmation for sign
-                                    up.</legend>
-                                <div class="input-block">
-                                    <label for="signup-email">E-mail</label>
-                                    <input id="signup-email" name="email_inscription" type="email" required>
-                                </div>
-                                <div class="input-block">
-                                    <label for="signup-password">Password</label>
-                                    <input name="pass_inscription" id="signup-password" type="password" required>
-                                </div>
-                                <div class="input-block">
-                                    <label for="signup-password-confirm">Confirm password</label>
-                                    <input name="confirm_pass_inscription" id="signup-password-confirm" type="password" required>
-                                </div>
+                                      </div>
+                                      <div class="input-block">
+                                          <label for="login-password">Password</label>
+                                          <input id="login-password" name="pass_connexion" type="password" required>
+                                      </div>
+                                  </fieldset>
+                                  <button type="submit" name="submit_connexion_form" class="btn-login">Connexion</button>
+                              </form>
+                          </div>
+                          <div class="form-wrapper">
+                              <button type="button" class="switcher switcher-signup">
+                                  Inscription
+                                  <span class="underline"></span>
+                              </button>
+                              <form class="form form-signup" id="inscription_form" action="inscription_form.php">
+                                  <fieldset>
+                                      <legend>Please, enter your email, password and password confirmation for sign
+                                          up.</legend>
+                                      <div class="input-block">
+                                          <label for="signup-email">E-mail</label>
+                                          <input id="signup-email" name="email_inscription" type="email" required>
+                                      </div>
+                                      <div class="input-block">
+                                          <label for="signup-password">Password</label>
+                                          <input name="pass_inscription" id="signup-password" type="password" required>
+                                      </div>
+                                      <div class="input-block">
+                                          <label for="signup-password-confirm">Confirm password</label>
+                                          <input name="confirm_pass_inscription" id="signup-password-confirm" type="password" required>
+                                      </div>
 
 
-                            </fieldset>
-                            <button type="submit" name="submi_inscription_form" class="btn-signup">Inscription</button>
-                        </form>
-                    </div>
-                </div>
+                                  </fieldset>
+                                  <button type="submit" name="submi_inscription_form" class="btn-signup">Inscription</button>
+                              </form>   -->
+                <a href="<?=PROOT?>register/login" class="btn btn-primary btn-lg " style="margin: 20px;">Connexion</a>
+                <a href="<?=PROOT?>register/register" class="btn btn-outline-primary btn-lg " style="margin: 20px;">Inscription</a>
+
+
+
             </section>
 
         </div>
-
-
         <div class="form-style-10 ">
             <h1>Demande de devis de traduction<span>demander votre devis facilement en remplissant ce
                             formulaire</span></h1>
@@ -348,7 +354,7 @@
                     <input type="text" name="nom" id="nom" />
                     <span class = "error" id="err_nom"></span>
                     <h4>Prénom</h4>
-                    <input type="text"  name="prenom" id="prenom"></input>
+                    <input type="text"  name="prenom" id="prenom"/>
                     <span class = "error" id="err_prenom"></span>
                 </div>
 
@@ -431,6 +437,10 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <div class="col-md-6">
+
 
 
 
@@ -445,7 +455,7 @@
 
 
 
-    </div>
+
 
 
 
@@ -579,19 +589,19 @@
     <!-- Footer -->
 
 
-<script>
-    function ajaxTest(){
-      $.ajax({
-        type: "POST",
-        url : '<?=PROOT?>home/testAjax',
-        data : {model_id:45},
-        success : function(resp){
-          if(resp.success){
-            window.alert(resp.data.name);
-          }
-          console.log(resp);
+    <script>
+        function ajaxTest(){
+            $.ajax({
+                type: "POST",
+                url : '<?=PROOT?>home/testAjax',
+                data : {model_id:45},
+                success : function(resp){
+                    if(resp.success){
+                        window.alert(resp.data.name);
+                    }
+                    console.log(resp);
+                }
+            });
         }
-      });
-    }
-</script>
-<?php $this->end(); ?>
+    </script>
+    <?php $this->end(); ?>
