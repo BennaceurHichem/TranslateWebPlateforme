@@ -14,6 +14,7 @@ use Core\FH;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <link href="css/fontawesome-free-5.12.0-web/css/all.css" rel="stylesheet">
+<link href="<?=PROOT?>css/style.css" rel="stylesheet">
 <!--load all styles -->
 <script src="https://kit.fontawesome.com/a33d1d077b.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/tooplate-style.css">
@@ -30,7 +31,7 @@ use Core\FH;
 <?php $this->end(); ?>
 
 
-<?php $this->end(); ?>
+
 <?php $this->start('body'); ?>
 <div class="col-md-6 col-md-offset-3 well">
   <h3 class="text-center">Log In</h3>
@@ -40,10 +41,11 @@ use Core\FH;
     <?= FH::inputBlock('text','Username','nom',$this->login->nom,['class'=>'form-control'],['class'=>'form-group']) ?>
     <?= FH::inputBlock('password','Password','pass',$this->login->pass,['class'=>'form-control'],['class'=>'form-group']) ?>
     <?= FH::checkboxBlock('Remember Me','remember_me',$this->login->getRememberMeChecked(),[],['class'=>'form-group']) ?>
-    <?= FH::submitBlock('Login', ['class'=>'btn btn-large btn-primary'],['class'=>'form-group'])?>
-    <div class="text-right">
-      <a href="<?=PROOT?>register/register" class="text-primary">Register</a>
-    </div>
+    <?= FH::submitBlock('Login', ['class'=>'btn btn-primary btn-lg'],['class'=>'form-group'])?>
+
   </form>
+
+
+
 </div>
 <?php $this->end(); ?>

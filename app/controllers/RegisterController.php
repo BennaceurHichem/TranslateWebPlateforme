@@ -43,8 +43,10 @@ class RegisterController extends Controller {
 
      if($user && md5($this->request->get('pass'))==$user->pass) {
 
-          $remember = $loginModel->getRememberMeChecked();
+         $remember = $loginModel->getRememberMeChecked();
           $user->login($remember);
+
+
           Router::redirect('');
 
         }  else {
@@ -58,13 +60,18 @@ class RegisterController extends Controller {
     $this->view->login = $loginModel;
     $this->view->displayErrors = $loginModel->getErrorMessages();
     $this->view->render('register/login');
+
   }
 
   public function logoutAction() {
     if(Users::currentUser()) {
       Users::currentUser()->logout();
     }
+
     Router::redirect('register/login');
+
+
+
   }
 
   public function registerAction() {
@@ -78,6 +85,9 @@ class RegisterController extends Controller {
     //  H::dnd($this->request->get());
       $newUser->setConfirm($this->request->get('confirm'));
             //$newUser->id=100;
+
+
+
       if($newUser->save()){
         Router::redirect('register/login');
       }

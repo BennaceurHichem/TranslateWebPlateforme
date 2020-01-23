@@ -1,20 +1,24 @@
 
 <?php
 use Core\FH;
+use Core\H;
+use App\Models\Users;
 ?>
 <?php $this->setSiteTitle('Home'); ?>
 
 <?php $this->start('head'); ?>
 
+<link rel="stylesheet" href="<?=PROOT?>css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="<?=PROOT?>css/custom.css" media="screen" title="no title" charset="utf-8">
+<script src="<?=PROOT?>js/jQuery-2.2.4.min.js"></script>
+<script src="<?=PROOT?>js/bootstrap.min.js"></script>
+<meta charset="UTF-8">
+
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <link href="css/fontawesome-free-5.12.0-web/css/all.css" rel="stylesheet">
 <!--load all styles -->
@@ -85,41 +89,115 @@ use Core\FH;
 
 
 <section class="main_part">
-    <div class="container-fluid">
+    <div class="container">
 
 
-        <div class="row">
-            <div class="col-md-12">
+
                 <div class="row" id="main_row">
 
 
 
-                    <div>
-                        <img class="main_img animated slideInLeft"
-                             src="img/%E2%80%94Pngtree%E2%80%94social%20media%20icons%20set%20logo_3588882.png"
-                             height="inherit">
-                    </div>
 
+                    <div class="col-md-3">
 
-
-                    <div>
-
-                        <ul class="social-icons">
-                            <li><a href="#"><img src="img/fb.png" alt=""></a></li>
-                            <li><a href="#"><img src="img/tw.png" alt=""></a></li>
-                            <li><a href="#"><img src="img/go.png" alt=""></a></li>
-                            <li><a href="#"><img src="img/pin.png" alt=""></a></li>
-                            <li><a href="#"><img src="img/st.png" alt=""></a></li>
-                            <li><a href="#"><img src="img/dr.png" alt=""></a></li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-md-6 text-center">
-                        <div class="conteneur2 diapo col">
-                            <div class="d2"></div>
+                        <div>
+                            <img class="main_img animated slideInLeft"
+                                 src="<?=PROOT?>img/download.png"
+                                 height="inherit">
                         </div>
+
+
+
                     </div>
+                    <div class="col-md-9">
+
+                        <!--Facebook-->
+                        <button type="button" class="btn btn-fb"><i class="fab fa-facebook-f pr-1"></i> Facebook</button>
+                        <!--Twitter-->
+                        <button type="button" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i> Twitter</button>
+                        <!--Google +-->
+                        <button type="button" class="btn btn-gplus"><i class="fab fa-google-plus-g pr-1"></i> Google +</button>
+                        <!--Linkedin-->
+                        <button type="button" class="btn btn-li"><i class="fab fa-linkedin-in pr-1"></i> Linkedin</button>
+                        <!--Instagram-->
+                        <button type="button" class="btn btn-ins"><i class="fab fa-instagram pr-1"></i> Instagram</button>
+                        <!--Pinterest-->
+                        <button type="button" class="btn btn-pin"><i class="fab fa-pinterest pr-1"></i> Pinterest</button>
+                        <!--Vkontakte-->
+                        <button type="button" class="btn btn-vk"><i class="fab fa-vk pr-1"></i> Vkontakte</button>
+                        <!--Stack Overflow-->
+                        <button type="button" class="btn btn-so"><i class="fab fa-stack-overflow pr-1"></i> Stack Overflow</button>
+                        <!--Youtube-->
+                        <button type="button" class="btn btn-yt"><i class="fab fa-youtube pr-1"></i> Youtube</button>
+                        <!--Slack-->
+                        <button type="button" class="btn btn-slack"><i class="fab fa-slack-hash pr-1"></i> Slack</button>
+                        <!--Github-->
+                        <button type="button" class="btn btn-git"><i class="fab fa-github pr-1"></i> Github</button>
+                        <!--Comments-->
+                        <button type="button" class="btn btn-comm"><i class="fas fa-comments pr-1"></i> Comments</button>
+                        <!--Email-->
+                        <button type="button" class="btn btn-email"><i class="fas fa-envelope pr-1"></i> Email</button>
+
+                        <!--Carousel Wrapper-->
+                        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                            <!--Indicators-->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                            </ol>
+                            <!--/.Indicators-->
+                            <!--Slides-->
+                            <div class="carousel-inner" role="listbox">
+                                <!--First slide-->
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="<?=PROOT?>img/ad.png"
+                                         alt="First slide">
+                                </div>
+                                <!--/First slide-->
+                                <!--Second slide-->
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"
+                                         alt="Second slide">
+                                </div>
+                                <!--/Second slide-->
+                                <!--Third slide-->
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
+                                         alt="Third slide">
+                                </div>
+                                <!--/Third slide-->
+                            </div>
+                            <!--/.Slides-->
+                            <!--Controls-->
+                            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                            <!--/.Controls-->
+                        </div>
+                        <!--/.Carousel Wrapper-->
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div>
+
+
+
+                    </div>
+
 
 
 
@@ -135,14 +213,8 @@ use Core\FH;
 
 
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
 
 
 
@@ -154,8 +226,6 @@ use Core\FH;
 
 
     </div>
-
-
 
 </section>
 
@@ -182,22 +252,12 @@ use Core\FH;
                     </div><!-- end col -->
 
                     <div class="blog-meta big-meta col-md-8">
-                        <h4><a href="single.html" title="">Banana-chip chocolate cake recipe</a></h4>
-                        <p class="description-article-text">Aenean interdum arcu blandit, vehicula magna non,
-                            placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit.
-                            Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.Aenean interdum arcu
-                            blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea
-                            sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor
-                            odio.Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et
-                            pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus
-                            ac felis nec, maximus tempor odio.Aenean interdum arcu blandit, vehicula magna non,
-                            placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit.
-                            Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.Aenean interdum arcu
-                            blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea
-                            sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor
-                            odio.Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et
-                            pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus
-                            ac felis nec, maximus tempor odio.</p>
+                        <h4><a href="single.html" title="">Saint-Malo</a></h4>
+                        <p class="description-article-text">Je passe mes vacances à Saint-Malo. Vous connaissez ? C’est en Bretagne. J’adore cette région. J’y vais tous les ans. J’ai une maison là-bas. D’habitude, j’y reste trois semaines en été, mais cette année, j’y suis resté seulement deux semaines à cause de mon travail. L’hiver, en général, je n’y vais presque jamais parce qu’il fait plutôt froid.
+                            Saint-Malo, c’est une jolie ville. C’est très touristique avec ses remparts du douzième siècle
+                            (les remparts, REMPART, ça signifie les murs de la ville, ça permet de se protéger quand il y a une guerre).
+                            On les a commencés en 1144. On peut voir aussi de très jolies maisons,
+                            en particulier dans le quartier de la cathédrale Saint-Vincent. Cette cathédrale date aussi du douzième siècle. Il y a aussi un château, des musées et le manoir de Jacques Cartier, le célèbre explorateur qui a découvert le Canada en 1534.</p>
                         <div>
                             <small><a href="blog-category-01.html" title="">Food</a></small>
                             <small><a href="single.html" title="">11 July, 2017</a></small>
@@ -224,10 +284,9 @@ use Core\FH;
             </div><!-- end col -->
 
             <div class="blog-meta big-meta col-md-8">
-                <h4><a href="single.html" title="">10 practical ways to choose organic vegetables</a></h4>
-                <p class="description-article-text">Aenean interdum arcu blandit, vehicula magna non, placerat
-                    elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim
-                    nibh, maximus ac felis nec, maximus tempor odio.</p>
+                <h4><a href="single.html" title=""> Qu’en est-il dans votre pays ?</a></h4>
+                <p class="description-article-text">Le sujet est donc lancé pour les présidentielles, la question est de savoir si un candidat de poids osera l’utiliser et s’il pourrait gagner l’élection avec une telle mesure car même si l’usage est très répandu en France, les Français sont très divisés et même s’ils ont été fumeurs à un moment de leur vie beaucoup sont vivement opposés à l’idée de dépénaliser cette drogue.
+                    Et vous qu’en pensez-vous ? Est-il nécessaire selon vous de changer la loi en France ? Qu’en est-il dans votre pays ?</p>
                 <div>
                     <small><a href="blog-category-01.html" title="">Food</a></small>
                     <small><a href="single.html" title="">10 July, 2017</a></small>
@@ -252,14 +311,13 @@ use Core\FH;
             </div><!-- end col -->
 
             <div class="blog-meta big-meta col-md-8">
-                <h4><a href="single.html" title="">We are making homemade ravioli</a></h4>
-                <p class="description-article-text">Aenean interdum arcu blandit, vehicula magna non, placerat
-                    elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim
-                    nibh, maximus ac felis nec, maximus tempor odio.</p>
+                <h4><a href="single.html" title="">Article traduction 1</a></h4>
+                <p class="description-article-text">Cette semaine, des centaines de manifestants se sont rassemblés place de la Bastille pour la marche mondiale du Cannabis. Cette manifestation a lieu chaque année dans plus de 250 villes dans le monde pour demander la dépénalisation de la consommation du cannabis, la régulation de sa production ainsi que la possibilité pour les médecins de le prescrire dans un cadre thérapeutique. Les slogans de la manifestions étaient amusants et originaux, les manifestants criaient notamment
+                    « je ne me drogue pas, je me soigne » ou encore « on veut du bédo bio ».</p>
                 <div>
                     <small><a href="blog-category-01.html" title="">Food</a></small>
                     <small><a href="single.html" title="">09 July, 2017</a></small>
-                    <small><a href="blog-author.html" title="">by Clara</a></small>
+                    <small><a href="blog-author.html" title="">by Hichem</a></small>
 
                     <a href="#" class="button-suite jump-link">Lire la suite</a>
 
@@ -284,7 +342,7 @@ use Core\FH;
 
 
 
-        <div>
+
 
             <section class="forms-section wow slideInRight" id="form1-div">
                 <h1 class="section-title">Veuillez Connectez </h1>
@@ -336,14 +394,33 @@ use Core\FH;
                                   </fieldset>
                                   <button type="submit" name="submi_inscription_form" class="btn-signup">Inscription</button>
                               </form>   -->
+                <?php if(Users::currentUser()): ?>
+                <div>
+                    <h1>Hello <?=Users::currentUser()->nom?></h1>
+                    <?php if(Users::currentUser()->estTrad):?>
+                    <div>
+                        <h1>Status:  Traducteur</h1>
+                    </div>
+
+                    <?php else: ?>
+                        <div>
+                                  <h1>Status:  Client</h1>
+                        </div>
+                    <?php endif;?>
+                    <a href="<?=PROOT?>register/logout" class="btn btn-outline-primary btn-lg " style="margin: 20px;">Logout</a>
+
+                </div>
+                <?php else: ?>
+
                 <a href="<?=PROOT?>register/login" class="btn btn-primary btn-lg " style="margin: 20px;">Connexion</a>
                 <a href="<?=PROOT?>register/register" class="btn btn-outline-primary btn-lg " style="margin: 20px;">Inscription</a>
+                <?php endif; ?>
 
 
 
             </section>
 
-        </div>
+
         <div class="form-style-10 ">
             <h1>Demande de devis de traduction<span>demander votre devis facilement en remplissant ce
                             formulaire</span></h1>
@@ -417,7 +494,7 @@ use Core\FH;
                     </div>
 
 
-                    <div class="custom-control custom-checkbox " style="margin-top: 30p;margin-bottom: 30px;">
+                    <div class="custom-control custom-checkbox " style="margin-top: 30px;margin-bottom: 30px;">
                         <input type="checkbox" value="assermentee" class="margin_form mw-100 custom-control-input" id="customCheck" name="assermentee">
                         <label class="custom-control-label" for="customCheck">traducteurs assermentée</label>
 
@@ -439,17 +516,6 @@ use Core\FH;
         </div>
     </div>
 
-    <div class="col-md-6">
-
-
-
-
-
-
-
-
-
-    </div>
 
 
 
@@ -468,140 +534,8 @@ use Core\FH;
 
 
 
-<section id="footer" class="footer">
-    <!-- Footer -->
-    <footer class="page-footer font-small indigo">
-
-        <!-- Footer Links -->
-        <div class="container">
-
-            <!-- Grid row-->
-            <div class="row text-center d-flex justify-content-center pt-5 mb-3">
-
-                <!-- Grid column -->
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="#!">Accueil</a>
-                    </h6>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="#!">traducteurs</a>
-                    </h6>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="#!">Blog</a>
-                    </h6>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="#!">Recrutement</a>
-                    </h6>
-                </div>
 
 
-                <!-- Grid column -->
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="#!">à propos</a>
-                    </h6>
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row-->
-            <hr class="rgba-white-light" style="margin: 0 15%;">
-
-            <!-- Grid row-->
-            <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
-
-                <!-- Grid column -->
-                <div class="col-md-8 col-12 mt-5">
-                    <p style="line-height: 1.7rem">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                        accusantium doloremque laudantium, totam rem
-                        aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                        sunt
-                        explicabo.
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                        consequuntur.</p>
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row-->
-            <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
-
-            <!-- Grid row-->
-            <div class="row pb-3">
-
-                <!-- Grid column -->
-                <div class="col-md-12">
-
-                    <div class="mb-5 flex-center">
-
-                        <!-- Facebook -->
-                        <a class="fb-ic">
-                            <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
-                        </a>
-                        <!-- Twitter -->
-                        <a class="tw-ic">
-                            <i class="fab fa-twitter fa-lg white-text mr-4"> </i>
-                        </a>
-                        <!-- Google +-->
-                        <a class="gplus-ic">
-                            <i class="fab fa-google-plus-g fa-lg white-text mr-4"> </i>
-                        </a>
-                        <!--Linkedin -->
-                        <a class="li-ic">
-                            <i class="fab fa-linkedin-in fa-lg white-text mr-4"> </i>
-                        </a>
-                        <!--Instagram-->
-                        <a class="ins-ic">
-                            <i class="fab fa-instagram fa-lg white-text mr-4"> </i>
-                        </a>
-                        <!--Pinterest-->
-                        <a class="pin-ic">
-                            <i class="fab fa-pinterest fa-lg white-text"> </i>
-                        </a>
-
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row-->
-
-        </div>
-        <!-- Footer Links -->
-
-    </footer>
-    <!-- Footer -->
 
 
-    <script>
-        function ajaxTest(){
-            $.ajax({
-                type: "POST",
-                url : '<?=PROOT?>home/testAjax',
-                data : {model_id:45},
-                success : function(resp){
-                    if(resp.success){
-                        window.alert(resp.data.name);
-                    }
-                    console.log(resp);
-                }
-            });
-        }
-    </script>
     <?php $this->end(); ?>

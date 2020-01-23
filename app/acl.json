@@ -3,13 +3,16 @@
     "denied" : {},
     "Home" : ["*"],
     "Register" : ["login", "register"],
-    "Restricted" : ["*"]
+    "Restricted" : ["*"],
+    "à propos" : ["*"],
+    "Contacts" : ["*"]
   },
   "LoggedIn" : {
     "denied" : {
       "Register" : ["login", "register"]
     },
     "Register" : ["logout"],
-    "Contacts" : ["*"]
+    "Contacts" : ["*"],
+    "à propos" : ["*"]
   }
 }

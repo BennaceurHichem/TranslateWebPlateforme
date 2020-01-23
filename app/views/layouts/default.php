@@ -7,27 +7,35 @@ use Core\Session;
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title><?=$this->siteTitle(); ?></title>
-    <link rel="stylesheet" href="<?=PROOT?>css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="<?=PROOT?>css/custom.css" media="screen" title="no title" charset="utf-8">
-    <script src="<?=PROOT?>js/jQuery-2.2.4.min.js"></script>
-    <script src="<?=PROOT?>js/bootstrap.min.js"></script>
-      <meta charset="UTF-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+      <!-- Bootstrap core CSS -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Material Design Bootstrap -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+
+      <link rel="stylesheet" href="<?=PROOT?>css/style.css">
 
 
-
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title><?=$this->siteTitle(); ?></title>
+      <link rel="stylesheet" href="<?=PROOT?>css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+      <link rel="stylesheet" href="<?=PROOT?>css/custom.css" media="screen" title="no title" charset="utf-8">
+      <script src="<?=PROOT?>js/jQuery-2.2.4.min.js"></script>
+      <script src="<?=PROOT?>js/bootstrap.min.js"></script>
 
 
 
       <?= $this->content('head'); ?>
-      <?php include 'main_menu.php' ?>
+
   </head>
   <body>
 
-    <div class="container-fluid" ">
+  <?php include 'main_menu.php' ?>
+  <div class="container-fluid" style="min-height:cal(100% - 125px);">
       <?= Session::displayMsg() ?>
       <?= $this->content('body'); ?>
     </div>
@@ -110,5 +118,15 @@ use Core\Session;
 
     </script>
 
+
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
   </body>
 </html>

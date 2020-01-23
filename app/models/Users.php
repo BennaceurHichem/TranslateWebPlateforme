@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use Core\Model;
+use Core\H;
 
 use App\Models\UserSessions;
 use Core\Cookie;
@@ -15,9 +16,10 @@ use Core\Validators\UniqueValidator;
 
 class Users extends Model {
 
-  private $_isLoggedIn, $_sessionName, $_cookieName, $_confirm;
-  public static $currentLoggedInUser = null;
+  private $_sessionName, $_cookieName, $_confirm,$_isLoggedIn;
+  public static $currentLoggedInUser;
   public $id_user,$nom,$email,$adresse,$pass,$numero,$acl,$deleted = 0,$prenom;
+  public $estTrad="false";
 
   public function __construct($user='') {
 
@@ -29,10 +31,15 @@ class Users extends Model {
     $this->_sessionName = CURRENT_USER_SESSION_NAME;
     $this->_cookieName = REMEMBER_ME_COOKIE_NAME;
     $this->_softDelete = true;
+
+
+
+      $estTrad="false";
     if($user != '') {
         //possibility of getting user by their id  or by nom
       if(is_int($user)) {
         $u = $this->_db->findFirst('user',['conditions'=>'id_user = ?', 'bind'=>[$user]],'App\Models\Users');
+
       } else {
 
         $u = $this->_db->findFirst('user', ['conditions'=>'nom = ?','bind'=>[$user]],'App\Models\Users');
@@ -47,6 +54,31 @@ class Users extends Model {
 
   public function validator(){
 
+
+      if(!H::currentPage()===PROOT."home/modificationprofile"){
+
+          $this->runValidation(new UniqueValidator($this,['field'=>'nom','msg'=>'That username already exists. Please choose a new one.']));
+          $this->runValidation(new UniqueValidator($this,['field'=>'email','msg'=>'email existe dans la base, veuillez choisir un autre']));
+          $this->runValidation(new RequiredValidator($this,['field'=>'nom','msg'=>'Le nom est obligatoire']));
+          // $this->runValidation(new RequiredValidator($this,['field'=>'prenom','msg'=>'le prenom est obligatoire.']));
+          $this->runValidation(new RequiredValidator($this,['field'=>'email','msg'=>'Email is required.']));
+          $this->runValidation(new NumericValidator($this,['field'=>'numero','msg'=>'Veuillez entrez des chiffres']));
+          $this->runValidation(new RequiredValidator($this,['field'=>'numero','msg'=>'numeros de telepone est obligatoire']));
+
+
+          $this->runValidation(new RequiredValidator($this,['field'=>'adresse','msg'=>'L\'adresse est obligatoire']));
+
+          $this->runValidation(new EmailValidator($this, ['field'=>'email','msg'=>'You must provide a valid email address']));
+          $this->runValidation(new MaxValidator($this,['field'=>'email','rule'=>150,'msg'=>'Email must be less than 150 characters.']));
+
+          $this->runValidation(new MinValidator($this,['field'=>'nom','rule'=>6,'msg'=>'Username must be at least 6 characters.']));
+          $this->runValidation(new MaxValidator($this,['field'=>'nom','rule'=>150,'msg'=>'Username must be less than 150 characters.']));
+          $this->runValidation(new RequiredValidator($this,['field'=>'pass','msg'=>'Password is required.']));
+          $this->runValidation(new MinValidator($this,['field'=>'pass','msg'=>'Password must be a minimum of 6 characters']));
+
+
+
+      }
       $this->runValidation(new RequiredValidator($this,['field'=>'nom','msg'=>'Le nom est obligatoire']));
    // $this->runValidation(new RequiredValidator($this,['field'=>'prenom','msg'=>'le prenom est obligatoire.']));
     $this->runValidation(new RequiredValidator($this,['field'=>'email','msg'=>'Email is required.']));
@@ -58,19 +90,14 @@ class Users extends Model {
 
       $this->runValidation(new EmailValidator($this, ['field'=>'email','msg'=>'You must provide a valid email address']));
     $this->runValidation(new MaxValidator($this,['field'=>'email','rule'=>150,'msg'=>'Email must be less than 150 characters.']));
-      $this->runValidation(new UniqueValidator($this,['field'=>'email','msg'=>'email existe dans la base, veuillez choisir un autre']));
 
       $this->runValidation(new MinValidator($this,['field'=>'nom','rule'=>6,'msg'=>'Username must be at least 6 characters.']));
     $this->runValidation(new MaxValidator($this,['field'=>'nom','rule'=>150,'msg'=>'Username must be less than 150 characters.']));
-    $this->runValidation(new UniqueValidator($this,['field'=>'nom','msg'=>'That username already exists. Please choose a new one.']));
     $this->runValidation(new RequiredValidator($this,['field'=>'pass','msg'=>'Password is required.']));
     $this->runValidation(new MinValidator($this,['field'=>'pass','msg'=>'Password must be a minimum of 6 characters']));
 
 
-    if($this->isNew()){
-      $this->runValidation(new MatchesValidator($this,['field'=>'pass','rule'=>$this->_confirm,'msg'=>"Your passwords do not match"]));
 
-    }
 
 
   }
@@ -84,7 +111,16 @@ class Users extends Model {
   public function findByUsername($username) {
     return $this->findFirst(['conditions'=> "nom = ?", 'bind'=>[$username]]);
   }
+    public function findByUserId($id) {
+        return $this->findFirst(['conditions'=> "id_user = ?", 'bind'=>[$id]]);
+    }
 
+    public  function findTraducteur() {
+        return $this->find(['conditions'=> "estTrad = ?", 'bind'=>[1]]);
+    }
+    public  function findFirstTraducteur() {
+        return $this->findFirst(['conditions'=> "estTrad = ?", 'bind'=>[1]]);
+    }
   public static function currentUser() {
     if(!isset(self::$currentLoggedInUser) && Session::exists(CURRENT_USER_SESSION_NAME)) {
       $u = new Users((int)Session::get(CURRENT_USER_SESSION_NAME));
@@ -99,28 +135,32 @@ class Users extends Model {
      * login mean that the session_name is the d of the user
      */
     public function login($rememberMe=false) {
-    Session::set($this->_sessionName, $this->id);
+    Session::set($this->_sessionName, $this->id_user);
     //in case where the user check the remember me
     if($rememberMe) {
+
       $hash = md5(uniqid() + rand(0, 100));
       $user_agent = Session::uagent_no_version();
       //set of cookies
       Cookie::set($this->_cookieName, $hash, REMEMBER_ME_COOKIE_EXPIRY);
        //fill the user_sessions table with information of this user session id
 
-      $fields = ['session'=>$hash, 'user_agent'=>$user_agent, 'user_id'=>$this->id];
+      $fields = ['session'=>$hash, 'user_agent'=>$user_agent, 'id_user'=>$this->id];
         //delete every apparition of a session of this user (based on id) in a specific user_agent(browser)
 
-        $this->_db->query("DELETE FROM user_sessions WHERE user_id = ? AND user_agent = ?", [$this->id, $user_agent]);
+        $this->_db->query("DELETE FROM user_sessions WHERE id_user = ? AND user_agent = ?", [$this->id, $user_agent]);
       //insert only this session with the specific id
+
+
         $this->_db->insert('user_sessions', $fields);
+
     }
   }
 
   public static function loginUserFromCookie() {
     $userSession = UserSessions::getFromCookie();
-    if($userSession && $userSession->user_id != '') {
-      $user = new self((int)$userSession->user_id);
+    if($userSession && $userSession->id_user != '') {
+      $user = new self((int)$userSession->id_user);
       if($user) {
         $user->login();
       }
@@ -130,9 +170,9 @@ class Users extends Model {
   }
 
   public function logout() {
-    $userSession = UserSessions::getFromCookie();
-    if($userSession) $userSession->delete();
     Session::delete(CURRENT_USER_SESSION_NAME);
+        //$userSession = UserSessions::getFromCookie();
+    //if($userSession) $userSession->delete();
     if(Cookie::exists(REMEMBER_ME_COOKIE_NAME)) {
       Cookie::delete(REMEMBER_ME_COOKIE_NAME);
     }

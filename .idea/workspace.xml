@@ -2,28 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b44b0976-416b-4237-b287-b8548207e2a8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/forme_devis.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/home/blog.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/home/modificationprofile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/home/profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/acl.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/acl.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/ContactsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ContactsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/menu_acl.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/menu_acl.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Contacts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Contacts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Traducteur.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Traducteur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/UserSessions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/UserSessions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/apropos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/apropos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/layouts/default.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/default.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/layouts/main_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/main_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/recrutement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/recrutement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/register/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/register/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/register/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/register/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Cookie.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Cookie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/DB.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/FH.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/FH.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruah.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,10 +48,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ruah" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -80,7 +83,12 @@
       <updated>1579212819989</updated>
       <workItem from="1579212821201" duration="26532000" />
       <workItem from="1579338878854" duration="28609000" />
-      <workItem from="1579424479380" duration="2526000" />
+      <workItem from="1579424479380" duration="13708000" />
+      <workItem from="1579467771629" duration="12442000" />
+      <workItem from="1579508008673" duration="5787000" />
+      <workItem from="1579624796732" duration="2369000" />
+      <workItem from="1579649746455" duration="12495000" />
+      <workItem from="1579798174428" duration="11973000" />
     </task>
     <servers />
   </component>
@@ -88,26 +96,58 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="414" y="149" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579809599578">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="414" y="149" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.689@0.0.1280.689" timestamp="1579809599578" />
+    <state x="371" y="93" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579652758001">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="371" y="93" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.689@0.0.1280.689" timestamp="1579652758001" />
     <state x="371" y="101" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579357229107">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="371" y="101" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1579357229107" />
-    <state x="336" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1579424959244">
+    <state x="421" y="101" key="FileChooserDialogImpl" timestamp="1579691097720">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="336" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1579424959244" />
-    <state x="295" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579269701758">
+    <state x="421" y="101" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1579691097720" />
+    <state x="437" y="160" key="NewPhpClassDialog" timestamp="1579509233320">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="295" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.689@0.0.1280.689" timestamp="1579269701758" />
-    <state x="335" y="77" width="739" height="606" key="find.popup" timestamp="1579383395314">
+    <state x="437" y="160" key="NewPhpClassDialog/0.0.1280.689@0.0.1280.689" timestamp="1579509233320" />
+    <state x="477" y="269" key="NewPhpFileDialog" timestamp="1579809620164">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="335" y="77" width="739" height="606" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1579383395314" />
-    <state x="297" y="155" key="run.anything.popup" timestamp="1579356681020">
+    <state x="477" y="269" key="NewPhpFileDialog/0.0.1280.689@0.0.1280.689" timestamp="1579809620164" />
+    <state x="93" y="93" width="1095" height="504" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579651656051">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="297" y="155" key="run.anything.popup/0.0.1280.689@0.0.1280.689" timestamp="1579356681020" />
+    <state x="93" y="93" width="1095" height="504" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.689@0.0.1280.689" timestamp="1579651656051" />
+    <state x="93" y="93" width="1095" height="504" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1579652246168">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="93" y="93" width="1095" height="504" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1280.689@0.0.1280.689" timestamp="1579652246168" />
+    <state x="336" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1579625611651">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="336" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1579625611651" />
+    <state x="295" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579478570351">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="295" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.689@0.0.1280.689" timestamp="1579478570351" />
+    <state x="335" y="77" width="836" height="606" key="find.popup" timestamp="1579815078137">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="335" y="77" width="836" height="606" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1579815078137" />
+    <state x="282" y="72" width="700" height="530" key="recent.locations.popup" timestamp="1579509299877">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="282" y="72" width="700" height="530" key="recent.locations.popup/0.0.1280.689@0.0.1280.689" timestamp="1579509299877" />
+    <state x="297" y="155" key="run.anything.popup" timestamp="1579692231372">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="297" y="155" key="run.anything.popup/0.0.1280.689@0.0.1280.689" timestamp="1579692231372" />
     <state x="303" y="10" key="search.everywhere.popup" timestamp="1579266931831">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

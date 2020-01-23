@@ -5,49 +5,59 @@ use App\Models\Users;
 $menu = Router::getMenu('menu_acl');
 $currentPage = H::currentPage();
 ?>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_menu" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?=PROOT?>home"><?=MENU_BRAND?></a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="main_menu">
-            <ul class="nav navbar-nav">
-                <?php foreach($menu as $key => $val):
-                    $active = ''; ?>
-                    <?php if(is_array($val)): ?>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?=$key?> <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <?php foreach($val as $k => $v):
-                                $active = ($v == $currentPage)? 'active':''; ?>
-                                <?php if($k == 'separator'): ?>
-                                <li role="separator" class="divider"></li>
-                            <?php else: ?>
-                                <li><a class="<?=$active?>" href="<?=$v?>"><?=$k?></a></li>
-                            <?php endif; ?>
-                            <?php endforeach; ?>
-                        </ul>
+
+
+<nav class="navbar navbar-expand-lg  navbar-light bg-light">
+    <a class="navbar-brand" href="<?=PROOT?>home"><?=MENU_MARK?></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main_menu">
+        <ul class="navbar-nav">
+
+
+
+
+
+                <li class="nav-item active" >
+                    <a class="Traducteurs" href="<?=PROOT?>home" style="tab-size: 15px;text-decoration-style: solid;margin-left: 10px;margin-right: 10px;">     Traducteurs    </a>
+                </li>
+                <li class="nav-item active" >
+                    <a class="Recrutement" href="<?=PROOT?>home" style="tab-size: 15px;text-decoration-style: solid;margin-left: 10px;margin-right: 10px;">        Recrutement    </a>
+                </li>
+                <li class="nav-item active" >
+                    <a class="Blog" href="<?=PROOT?>home/blog" style="tab-size: 15px;text-decoration-style: solid;margin-left: 10px;margin-right: 10px;">   Blog     </a>
+                </li>
+                <li class="nav-item active" >
+                    <a class="A propos" href="<?=PROOT?>home/apropos" style="tab-size: 15px;text-decoration-style: solid;margin-left: 10px;margin-right: 10px;">       A propos     </a>
+                </li>
+
+
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-fb"><i class="fab fa-facebook-f"></i></button>
+
                     </li>
-                <?php else:
-                    $active = ($val == $currentPage)? 'active':''; ?>
-                    <li><a class="<?=$active?>" href="<?=$val?>"><?=$key?></a></li>
-                <?php endif; ?>
-                <?php endforeach; ?>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <?php if(Users::currentUser()): ?>
-                    <li><a href="#">Hello <?=Users::currentUser()->nom?></a></li>
-                <?php endif; ?>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-tw"><i class="fab fa-twitter"></i></button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-gplus"><i class="fab fa-google-plus-g"></i></button>
+                    </li>
+                </ul>
+            </div>
+
+
+        </ul>
+
+
+        </ul>
+    </div>
 </nav>
+<!-- JQuery -->

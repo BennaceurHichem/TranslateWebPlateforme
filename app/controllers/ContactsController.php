@@ -22,7 +22,7 @@ class ContactsController extends Controller {
 
   public function addAction(){
     $contact = new Contacts();
-    if($this->request->isPost()){
+    if($this->request->isPost()){   
       $this->request->csrfCheck();
       $contact->assign($this->request->get());
       $contact->user_id = Users::currentUser()->id;
