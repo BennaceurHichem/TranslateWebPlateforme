@@ -30,10 +30,10 @@ class FH {
     return $html;
   }
 
-  public static function checkboxone($label,$name,$checked=false,$inputAttrs=[],$divAttrs=[]){
+  public static function checkboxone($label,$name,$checked=0,$inputAttrs=[],$divAttrs=[]){
     $divString = self::stringifyAttrs($divAttrs);
     $inputString = self::stringifyAttrs($inputAttrs);
-    $checkString = ($checked)? ' checked="checked"' : '';
+    $checkString = ($checked)? ' checked="checked"' : '0';
     $html = '<div'.$divString.'>';
     $html .= '<label for="'.$name.'">'.$label.' <input type="checkbox" id="'.$name.'" name="'.$name.'" value="1"'.$checkString.$inputString.'></label>';
     $html .= '</div>';

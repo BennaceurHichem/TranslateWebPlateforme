@@ -11,13 +11,14 @@ use App\Models\Users;
     <form class="form" action="" method="post">
         <?= FH::csrfInput() ?>
         <?= FH::displayErrors($this->displayErrors) ?>
-        <?= FH::inputBlock('text','Nom','nom',Users::currentUser()->nom,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
-        <?= FH::inputBlock('text','prenom','prenom',Users::currentUser()->prenom,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
-        <?= FH::inputBlock('text','Numeros de telephone','numero',Users::currentUser()->numero ,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
-        <?= FH::inputBlock('text','Adresse','adresse',Users::currentUser()->adresse ,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
+        <?= FH::inputBlock('text','Nom','nom',  $this->user->nom,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
+        <?= FH::inputBlock('text','prenom','prenom',$this->user->prenom,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
+        <?= FH::inputBlock('text','Numeros de telephone','numero',$this->user->numero ,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
+        <?= FH::inputBlock('text','Adresse','adresse',$this->user->adresse ,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
 
-        <?= FH::inputBlock('text','Email','email',Users::currentUser()->email,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
+        <?= FH::inputBlock('text','Email','email',$this->user->email,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
 
+        <?= FH::inputBlock('password','Password','pass',$this->user->pass,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
 
 
 

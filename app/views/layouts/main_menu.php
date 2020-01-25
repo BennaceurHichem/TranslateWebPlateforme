@@ -19,21 +19,30 @@ $currentPage = H::currentPage();
 
 
 
-
-
+            <?php if(!empty(Users::currentUser()) ): ?>
+            <?php if(!Users::currentUser()->estTrad) : ?>
                 <li class="nav-item active" >
                     <a class="Traducteurs" href="<?=PROOT?>home" style="tab-size: 15px;text-decoration-style: solid;margin-left: 10px;margin-right: 10px;">     Traducteurs    </a>
                 </li>
+            <?php endif; ?>
+            <?php endif; ?>
+            <?php if(!empty(Users::currentUser()) ): ?>
+                 <?php if(Users::currentUser()->estTrad=="1") : ?>
+
                 <li class="nav-item active" >
-                    <a class="Recrutement" href="<?=PROOT?>home" style="tab-size: 15px;text-decoration-style: solid;margin-left: 10px;margin-right: 10px;">        Recrutement    </a>
+                    <a class="Recrutement" href="<?=PROOT?>home/recrutement" style="tab-size: 15px;text-decoration-style: solid;margin-left: 10px;margin-right: 10px;">        Recrutement    </a>
                 </li>
+                <?php endif; ?>
+            <?php endif; ?>
                 <li class="nav-item active" >
                     <a class="Blog" href="<?=PROOT?>home/blog" style="tab-size: 15px;text-decoration-style: solid;margin-left: 10px;margin-right: 10px;">   Blog     </a>
                 </li>
                 <li class="nav-item active" >
                     <a class="A propos" href="<?=PROOT?>home/apropos" style="tab-size: 15px;text-decoration-style: solid;margin-left: 10px;margin-right: 10px;">       A propos     </a>
                 </li>
-
+            <li class="nav-item active" >
+                <a class="A propos" href="<?=PROOT?>home/profile" style="tab-size: 15px;text-decoration-style: solid;margin-left: 10px;margin-right: 10px;">      Profile    </a>
+            </li>
 
 
         <ul class="nav navbar-nav navbar-right">

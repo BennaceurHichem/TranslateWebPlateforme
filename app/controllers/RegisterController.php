@@ -1,10 +1,13 @@
 <?php
 namespace App\Controllers;
+use App\Models\Clientt;
 use Core\Controller;
 use Core\Router;
 use Core\H;
+use Core\DB;
 use App\Models\Users;
 use App\Models\Login;
+use PDO;
 
 class RegisterController extends Controller {
 
@@ -37,14 +40,14 @@ class RegisterController extends Controller {
       if($loginModel->validationPassed()){
 
           //UsersModel is generated from the loadModel function
-        $user = $this->UsersModel->findByUsername($_POST['nom']);
+        $userr = $this->UsersModel->findByUsername($_POST['nom']);
 
 //H::dnd(password_verify($this->request->get('pass'), $user->pass));
-
-     if($user && md5($this->request->get('pass'))==$user->pass) {
+        //  H::dnd(md5($this->request->get('pass')));
+     if($userr && md5($this->request->get('pass'))==$userr->pass) {
 
          $remember = $loginModel->getRememberMeChecked();
-          $user->login($remember);
+          $userr->login($remember);
 
 
           Router::redirect('');
@@ -87,8 +90,19 @@ class RegisterController extends Controller {
             //$newUser->id=100;
 
 
-
+        //H::dnd($newUser->estTrad);
       if($newUser->save()){
+
+          if($newUser->estTrad !="1"){
+
+
+
+              $client = new Clientt();
+
+              $client->insert($newUser->maxId());
+              //H::dnd($client);
+          }
+
         Router::redirect('register/login');
       }
 
@@ -96,6 +110,7 @@ class RegisterController extends Controller {
     }
     $this->view->newUser = $newUser;
     $this->view->displayErrors = $newUser->getErrorMessages();
+
 
     $this->view->render('register/register');
 

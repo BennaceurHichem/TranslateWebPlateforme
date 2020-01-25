@@ -20,7 +20,7 @@ use Core\FH;
     <?= FH::inputBlock('password','Password','pass',$this->newUser->pass,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
     <?= FH::inputBlock('password','Confirm Password','confirm',$this->newUser->getConfirm(),['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
 
-    <?= FH::checkboxone('vous êtes un Traducteur?','estTrad',false,['class'=>'form-check-input input-sm'],['class'=>'form-check-inline']) ?>
+    <?= FH::checkboxone('vous êtes un Traducteur?','estTrad',0,['class'=>'form-check-input input-sm'],['class'=>'form-check-inline']) ?>
 
 
     <?= FH::submitBlock('Register', ['class'=>'btn btn-primary btn-lg'],['class'=>'form-group'])?>

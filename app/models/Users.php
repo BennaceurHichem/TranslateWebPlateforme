@@ -21,6 +21,9 @@ class Users extends Model {
   public $id_user,$nom,$email,$adresse,$pass,$numero,$acl,$deleted = 0,$prenom;
   public $estTrad="false";
 
+
+
+
   public function __construct($user='') {
 
     $table = 'user';
@@ -52,7 +55,21 @@ class Users extends Model {
     }
   }
 
-  public function validator(){
+
+  public function lastIdUser(){
+        return $this->lastId();
+  }
+
+  public function maxUser(){
+           return  ($this->find(['order'=>"id_user DESC", 'limit'=>1]));
+
+  }
+    public function maxId(){
+        return $this->maxUser()[0]->id_user;
+    }
+
+
+    public function validator(){
 
 
       if(!H::currentPage()===PROOT."home/modificationprofile"){
@@ -108,12 +125,42 @@ class Users extends Model {
     }
   }
 
+    public function save() {
+
+
+        $this->validator();
+        // die($this->_validates);
+        if($this->_validates){
+            $this->beforeSave();
+
+            $fields = H::getObjectProperties($this);
+
+            // determine whether to update or insert
+
+            if(property_exists($this, 'id_user') && $this->id_user != '') {
+                $save = $this->update($this->id_user, $fields);
+
+                $this->afterSave();
+
+                return $save;
+            } else {
+
+                $save = $this->insert($fields);
+                $this->afterSave();
+                return $save;
+            }
+        }
+
+        return false;
+    }
+
   public function findByUsername($username) {
     return $this->findFirst(['conditions'=> "nom = ?", 'bind'=>[$username]]);
   }
     public function findByUserId($id) {
         return $this->findFirst(['conditions'=> "id_user = ?", 'bind'=>[$id]]);
     }
+
 
     public  function findTraducteur() {
         return $this->find(['conditions'=> "estTrad = ?", 'bind'=>[1]]);
@@ -192,4 +239,7 @@ class Users extends Model {
   public function getConfirm(){
     return $this->_confirm;
   }
+
+
+
 }

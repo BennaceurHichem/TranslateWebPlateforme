@@ -9,7 +9,8 @@ class DB {
   private static $_instance = null;
   private $_pdo, $_query, $_error = false;
   //=_result is the the result of the query funtion , result is sotred in this query
-     private  $_result, $_count = 0, $_lastInsertID = null;
+     private  $_result, $_count = 0;
+     private $_lastInsertID = null;
 
   private function __construct() {
     try {
@@ -28,6 +29,10 @@ class DB {
     return self::$_instance;
   }
 
+  public function lastId(){
+
+     return $this->_pdo->lastInsertId();
+  }
   public function query($sql, $params = [],$class = false) {
     $this->_error = false;
     if($this->_query = $this->_pdo->prepare($sql)) {
@@ -168,6 +173,7 @@ class DB {
     $fieldString = rtrim($fieldString, ',');
     $valueString = rtrim($valueString, ',');
     $sql = "INSERT INTO {$table} ({$fieldString}) VALUES ({$valueString})";
+    //H::dnd($sql);
     if(!$this->query($sql,$values)->error()) {
       return true;
     }
@@ -184,6 +190,9 @@ class DB {
     $fieldString = trim($fieldString);
     $fieldString = rtrim($fieldString, ',');
     $sql = "UPDATE {$table} SET {$fieldString} WHERE id_{$table}= {$id}";
+
+
+
 
     if(!$this->query($sql, $values)->error()) {
       return true;
@@ -211,9 +220,7 @@ class DB {
     return $this->_count;
   }
 
-  public function lastID() {
-    return $this->_lastInsertID;
-  }
+
 
     /**
      * @param $table

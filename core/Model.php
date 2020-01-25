@@ -3,7 +3,7 @@ namespace Core;
 
 class Model {
   protected $_db, $_table, $_modelName, $_softDelete = false,$_validates=true, $_validationErrors=[];
-  public $id;
+
 
   public function __construct($table) {
     $this->_db = DB::getInstance();
@@ -15,6 +15,10 @@ class Model {
     return $this->_db->get_columns($this->_table);
   }
 
+
+  public function lastId(){
+      return $this->_db->lastId();
+  }
   protected function _softDeleteParams($params){
     if($this->_softDelete){
       if(array_key_exists('conditions',$params)){
@@ -50,6 +54,8 @@ class Model {
   }
 
   public function save() {
+
+
     $this->validator();
        // die($this->_validates);
     if($this->_validates){
@@ -57,6 +63,7 @@ class Model {
 
       $fields = H::getObjectProperties($this);
       // determine whether to update or insert
+
       if(property_exists($this, 'id') && $this->id != '') {
         $save = $this->update($this->id, $fields);
         $this->afterSave();
