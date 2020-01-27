@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 20 jan. 2020 à 22:15
+-- Généré le :  sam. 25 jan. 2020 à 19:15
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -54,7 +54,8 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id_client`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL);
+(7, NULL, NULL),
+(39, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -75,17 +76,18 @@ CREATE TABLE `devis` (
   `traducteur_assermente` tinyint(1) NOT NULL DEFAULT 0,
   `date` timestamp NULL DEFAULT NULL,
   `id_client` int(6) UNSIGNED NOT NULL,
-  `id_document` int(6) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `lang_dest` enum('Arabe','Francais','Anglais','Chinois','Espagnol','Allemand','Italien') COLLATE utf8mb4_bin NOT NULL DEFAULT 'Francais',
+  `lang_src` enum('Arabe','Francais','Anglais','Chinois','Espagnol','Allemand','Italien') COLLATE utf8mb4_bin NOT NULL DEFAULT 'Arabe'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `devis`
 --
 
-INSERT INTO `devis` (`id_devis`, `nom`, `prenom`, `email`, `numero`, `adresse`, `type_traduction`, `commentaires`, `etat`, `traducteur_assermente`, `date`, `id_client`, `id_document`, `created_at`, `updated_at`) VALUES
-(1, 'devis 1 ', 'devis 1 ', '1', '1', '1', 'scientifique', '1', 'en-cours', 1, '2020-01-14 23:00:00', 1, 1, NULL, NULL);
+INSERT INTO `devis` (`id_devis`, `nom`, `prenom`, `email`, `numero`, `adresse`, `type_traduction`, `commentaires`, `etat`, `traducteur_assermente`, `date`, `id_client`, `created_at`, `updated_at`, `lang_dest`, `lang_src`) VALUES
+(1, 'devis 1 ', 'devis 1 ', '1', '1', '1', 'scientifique', '1', 'en-cours', 1, '2020-01-14 23:00:00', 1, NULL, NULL, 'Arabe', 'Arabe');
 
 -- --------------------------------------------------------
 
@@ -179,7 +181,9 @@ CREATE TABLE `traducteur` (
 INSERT INTO `traducteur` (`id_traducteur`, `est_assermente`, `est_approuve`, `created_at`, `updated_at`) VALUES
 (1, 0, 0, NULL, NULL),
 (2, 0, 0, NULL, NULL),
-(10, 0, 0, NULL, NULL);
+(10, 0, 0, NULL, NULL),
+(100, 0, 1, NULL, NULL),
+(41, 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -261,9 +265,34 @@ INSERT INTO `user` (`id_user`, `nom`, `prenom`, `email`, `pass`, `numero`, `adre
 (11, 'bennaceur_hichem', 'hichem', 'gh@gmail.com', '$2y$10$EN9Wp355UtYobrsAnXOArulewGG7exZaT', '0555555555', 'ESI', NULL, 0, 0),
 (12, 'raoufBen', 'raoufBen', 'g@gmail.com', '$2y$10$4Cz7Pqe/Q6mfUcgAATtoO.GdA3zfoB1Yp', '0555123456', 'ESI', NULL, 0, 0),
 (13, 'aaaaaa', 'bbbbb', 'hichampredator@gmailLL.com', '$2y$10$oAQisMT4JH/0e1CCQPy.JefBRtLe6C2gh', '0555123456', 'beaulieu', NULL, 0, 0),
-(14, 'azerty', 'azerty', 'Q@gmail.com', 'b59c67bf196a4758191e42f76670ceba', '0555105901', 'beaulieu', NULL, 0, 0),
+(14, 'qwerty', 'qwerty', 'qwerty@gmail.com', '2f7b52aacfbf6f44e13d27656ecb1f59', '0555105901', 'beaulieu', NULL, 0, 0),
 (15, 'hichemBen', 'h_bennaceur', 'hichaaaaampredator@gmail.com', 'b59c67bf196a4758191e42f76670ceba', '0555123456', 'beaulieu', NULL, 0, 0),
-(16, 'h_bennaceurrrr', 'erdkdk', 'g@d.com', 'b59c67bf196a4758191e42f76670ceba', '0000000000', 'bebebeb', NULL, 0, 1);
+(16, 'modifiee', 'erdkdk', 'g@d.com', '4a7d1ed414474e4033ac29ccb8653d9b', '0000000000', 'bebebeb', NULL, 0, 1),
+(17, 'testest', 'testtest', 'hichampredator@gmail.com', '2f7b52aacfbf6f44e13d27656ecb1f59', '0000000000', 'oued smar ', NULL, 0, 1),
+(18, 'client', 'client', 'A@GMAIL.COM', 'b59c67bf196a4758191e42f76670ceba', '0555123456', 'AAAA', NULL, 0, 0),
+(19, 'aaaaaaa', 'bbbbbbbbbb', 'n@gm.cm', 'b59c67bf196a4758191e42f76670ceba', '0000000000', 'nnnn', NULL, 0, 0),
+(20, 'testClient', 'testClient', 'hhhh@g.c', 'b59c67bf196a4758191e42f76670ceba', '0000000000', 'aaaa', NULL, 0, 0),
+(21, 'ddfklscdlk', 'dckcdlkd', 'A@GMAIL.COMAAA', 'b59c67bf196a4758191e42f76670ceba', '111111', 'AA', NULL, 0, 0),
+(22, 'DODXLS', 'SKSKSK', 'D@GMAIL.XM', 'b59c67bf196a4758191e42f76670ceba', '111111', 'AAA', NULL, 0, 0),
+(23, 'kdkdkksk', 'dkdkkddk', 'qqqq@g.v', '698d51a19d8a121ce581499d7b701668', '000000', 'ssssk', NULL, 0, 0),
+(24, 'LSLSSKKK', 'SJSJSJS', 'sl@s.cm', 'c4ca4238a0b923820dcc509a6f75849b', '0000000000', 'ls', NULL, 0, 1),
+(25, 'ksskskksks', 'ldkdksk', 'Q@gmail.com', 'b59c67bf196a4758191e42f76670ceba', '000', 'sossl', NULL, 0, 0),
+(26, 'dkdkkdkd', 'xdkxkxkxk', 'slslsls@s.d', '698d51a19d8a121ce581499d7b701668', '00000', 'lslsl', NULL, 0, 0),
+(27, 'dlllxl', 'slslsl', 'j@s.cl', 'f09564c9ca56850d4cd6b3319e541aee', '0555105901', 'dkd', NULL, 0, 0),
+(28, 'sisksxkl', 'djdjjdk', 'djd@h.com', '7fc56270e7a70fa81a5935b72eacbe29', '000000', 'jdjdjd', NULL, 0, 0),
+(29, 'dkkskJJJJ', 'dkdkdk', 'Qqq@g.comm', '7fc56270e7a70fa81a5935b72eacbe29', '000000', 'sksk', NULL, 0, 0),
+(30, 'dkkskJJJJ', 'dkdkdk', 'Qqq@g.comm', '4cbd6d53280de25e04712c7434a70642', '000000', 'sksk', NULL, 0, 0),
+(31, 'dkkxkd', 'kkdkd', 'S@Q.CM', '7fc56270e7a70fa81a5935b72eacbe29', '0555105901', 'SSK', NULL, 0, 0),
+(32, 'fghjklm', 'fghjkl', 'S@Q.CMs', '7fc56270e7a70fa81a5935b72eacbe29', '000000', 'skskks', NULL, 0, 0),
+(33, 'KDKDKkekk', 'DJDJ', 'dkdk@gmail.com', '0cc175b9c0f1b6a831c399e269772661', '000000', 'js', NULL, 0, 0),
+(34, 'skskdskksks', 'slsl', 'q@fh.cm', '0cc175b9c0f1b6a831c399e269772661', '000000', 'qkkskq', NULL, 0, 0),
+(35, 'dkdkdJJJ', 'dkdkdk', 'a@gmail.comQ', '7fc56270e7a70fa81a5935b72eacbe29', '0000000000', 'KEKDKD', NULL, 0, 0),
+(36, 'sskkds', 'djdjdj', 'Qqq@g.commP', '7fc56270e7a70fa81a5935b72eacbe29', '0000000000', 'Q', NULL, 0, 0),
+(37, 'raouf_bennaceur', 'aaa', 'aa@g.cccc', '0cc175b9c0f1b6a831c399e269772661', '000', 'k', NULL, 0, 0),
+(38, 'sdfghjkl', 'fvgbn,;:!', 'A@GMAIL.COMLLL', 'b59c67bf196a4758191e42f76670ceba', '0000', 'SJSJSJ', NULL, 0, 0),
+(39, 'sdfghjkl:m!', 'sgsjsk', 'l@g.cl', '74b87337454200d4d33f80c4663dc5e5', '0444444', 'KSK', NULL, 0, 0),
+(40, 'treducteur', 'hichem', 'trad@gmail.com', 'b59c67bf196a4758191e42f76670ceba', '0555123456', 'BEAULIEU', NULL, 0, 1),
+(41, 'traducteur', 'hichem', 'traducteur@gmail.com', 'b59c67bf196a4758191e42f76670ceba', '0555105901', 'beulieu', NULL, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -286,7 +315,11 @@ INSERT INTO `user_sessions` (`id`, `id_user`, `session`, `user_agent`) VALUES
 (1, NULL, '7076fed8739893d9acde5b19a9bbe962', 'Mozilla (Windows NT 10.0; Win64; x64) AppleWebKit (KHTML, like Gecko) Chrome Safari'),
 (2, NULL, '7076fed8739893d9acde5b19a9bbe962', 'Mozilla (Windows NT 10.0; Win64; x64) AppleWebKit (KHTML, like Gecko) Chrome Safari'),
 (3, NULL, '7076fed8739893d9acde5b19a9bbe962', 'Mozilla (Windows NT 10.0; Win64; x64) AppleWebKit (KHTML, like Gecko) Chrome Safari'),
-(4, NULL, '7076fed8739893d9acde5b19a9bbe962', 'Mozilla (Windows NT 10.0; Win64; x64) AppleWebKit (KHTML, like Gecko) Chrome Safari');
+(4, NULL, '7076fed8739893d9acde5b19a9bbe962', 'Mozilla (Windows NT 10.0; Win64; x64) AppleWebKit (KHTML, like Gecko) Chrome Safari'),
+(5, NULL, 'ff4d5fbbafdf976cfdc032e3bde78de5', 'Mozilla (Windows NT 10.0; Win64; x64) AppleWebKit (KHTML, like Gecko) Chrome Safari'),
+(6, NULL, 'ebd9629fc3ae5e9f6611e2ee05a31cef', 'Mozilla (Windows NT 10.0; Win64; x64) AppleWebKit (KHTML, like Gecko) Chrome Safari'),
+(7, NULL, '3dc4876f3f08201c7c76cb71fa1da439', 'Mozilla (Windows NT 10.0; Win64; x64) AppleWebKit (KHTML, like Gecko) Chrome Safari'),
+(8, NULL, '99c5e07b4d5de9d18c350cdf64c5aa3d', 'Mozilla (Windows NT 10.0; Win64; x64) AppleWebKit (KHTML, like Gecko) Chrome Safari');
 
 --
 -- Index pour les tables déchargées
@@ -309,8 +342,7 @@ ALTER TABLE `client`
 --
 ALTER TABLE `devis`
   ADD PRIMARY KEY (`id_devis`),
-  ADD KEY `id_client` (`id_client`),
-  ADD KEY `id_document` (`id_document`);
+  ADD KEY `id_client` (`id_client`);
 
 --
 -- Index pour la table `document`
@@ -416,13 +448,13 @@ ALTER TABLE `traducteur_langue`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_user` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT pour la table `user_sessions`
 --
 ALTER TABLE `user_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,5 +1,6 @@
 <?php
 use Core\FH;
+use Core\H;
 ?>
 <?php $this->start('head'); ?>
 
@@ -26,4 +27,7 @@ use Core\FH;
     <?= FH::submitBlock('Register', ['class'=>'btn btn-primary btn-lg'],['class'=>'form-group'])?>
 
 </div>
+
+
+
 <?php $this->end(); ?>

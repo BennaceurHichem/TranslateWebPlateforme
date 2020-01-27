@@ -1,5 +1,6 @@
 <?php
 use Core\FH;
+use Core\H;
 ?>
 <?php $this->start('head'); ?>
 
@@ -48,4 +49,6 @@ use Core\FH;
 
 
 </div>
+
+
 <?php $this->end(); ?>

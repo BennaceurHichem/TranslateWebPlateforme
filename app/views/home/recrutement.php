@@ -33,8 +33,8 @@ if(isset($_FILES['cv'])){
     }
 
     $file_name_id = $idTrad."-"."cv_traducteur_".$file_name;
-    $dest="C:/xampp/htdocs/TRADUCTION/devis/".$idTrad."-"."cv_traducteur_".$file_name;
-    H::dnd($dest);
+    $dest="C:/xampp/htdocs/TRADUCTION/cv/".$idTrad."-"."cv_traducteur_".$file_name;
+
 
 
 
@@ -44,7 +44,6 @@ if(isset($_FILES['cv'])){
     }else{
 
         print_r($errors);
-        H::dnd(move_uploaded_file($file_name,$dest));
     }
 }
 ?>

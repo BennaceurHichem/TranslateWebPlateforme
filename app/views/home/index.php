@@ -3,6 +3,8 @@
 use Core\FH;
 use Core\H;
 use App\Models\Users;
+
+use App\Models\Devis;
 ?>
 <?php $this->setSiteTitle('Home'); ?>
 
@@ -34,6 +36,11 @@ use App\Models\Users;
 <link rel="text/javascript" href="js/Myanimations.js">
 
 
+
+<?php
+
+?>
+
 <?php $this->end(); ?>
 
 
@@ -41,48 +48,7 @@ use App\Models\Users;
 <?php $this->start('body'); ?>
 
 <header>
-    <!-- NavBar Code
-    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-        <a class="navbar-brand" href="#">STRIKE</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
-            <ul class="navbar-nav text-center">
-                <li class="nav-item active ">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
-                    </h6>
 
-                </li>
-                <li class="nav-item">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="nav-link" href="#">traducteurs</a>
-                    </h6>
-
-                </li>
-                <li class="nav-item">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="nav-link" href="#">Blog</a>
-                    </h6>
-                </li>
-                <li class="nav-item">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="nav-link" href="#">Recrutement</a>
-                    </h6>
-                </li>
-                <li class="nav-item">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="nav-link" href="#">à propos</a>
-                    </h6>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-     -->
-    <!-- NavBarCode end -->
 
 
 </header>
@@ -103,7 +69,7 @@ use App\Models\Users;
                         <div>
                             <img class="main_img animated slideInLeft"
                                  src="<?=PROOT?>img/download.png"
-                                 height="inherit">
+                                 style="margin-right: 80px;height:250px;width: 250px ">
                         </div>
 
 
@@ -111,32 +77,7 @@ use App\Models\Users;
                     </div>
                     <div class="col-md-9">
 
-                        <!--Facebook-->
-                        <button type="button" class="btn btn-fb"><i class="fab fa-facebook-f pr-1"></i> Facebook</button>
-                        <!--Twitter-->
-                        <button type="button" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i> Twitter</button>
-                        <!--Google +-->
-                        <button type="button" class="btn btn-gplus"><i class="fab fa-google-plus-g pr-1"></i> Google +</button>
-                        <!--Linkedin-->
-                        <button type="button" class="btn btn-li"><i class="fab fa-linkedin-in pr-1"></i> Linkedin</button>
-                        <!--Instagram-->
-                        <button type="button" class="btn btn-ins"><i class="fab fa-instagram pr-1"></i> Instagram</button>
-                        <!--Pinterest-->
-                        <button type="button" class="btn btn-pin"><i class="fab fa-pinterest pr-1"></i> Pinterest</button>
-                        <!--Vkontakte-->
-                        <button type="button" class="btn btn-vk"><i class="fab fa-vk pr-1"></i> Vkontakte</button>
-                        <!--Stack Overflow-->
-                        <button type="button" class="btn btn-so"><i class="fab fa-stack-overflow pr-1"></i> Stack Overflow</button>
-                        <!--Youtube-->
-                        <button type="button" class="btn btn-yt"><i class="fab fa-youtube pr-1"></i> Youtube</button>
-                        <!--Slack-->
-                        <button type="button" class="btn btn-slack"><i class="fab fa-slack-hash pr-1"></i> Slack</button>
-                        <!--Github-->
-                        <button type="button" class="btn btn-git"><i class="fab fa-github pr-1"></i> Github</button>
-                        <!--Comments-->
-                        <button type="button" class="btn btn-comm"><i class="fas fa-comments pr-1"></i> Comments</button>
-                        <!--Email-->
-                        <button type="button" class="btn btn-email"><i class="fas fa-envelope pr-1"></i> Email</button>
+
 
                         <!--Carousel Wrapper-->
                         <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
@@ -272,59 +213,71 @@ use App\Models\Users;
 
             <hr class="invis">
 
-            <div class="blog-box row wow slideInLeft data-wow-delay=" 0.2s"">
-            <div class="col-md-4">
-                <div class="post-media">
-                    <a href="single.html" title="">
-                        <img src="img/%E2%80%94Pngtree%E2%80%94social%20media%20icons%20set%20logo_3588882.png"
-                             alt="" class="img-fluid">
-                        <div class="hovereffect"></div>
-                    </a>
-                </div><!-- end media -->
-            </div><!-- end col -->
 
-            <div class="blog-meta big-meta col-md-8">
-                <h4><a href="single.html" title=""> Qu’en est-il dans votre pays ?</a></h4>
-                <p class="description-article-text">Le sujet est donc lancé pour les présidentielles, la question est de savoir si un candidat de poids osera l’utiliser et s’il pourrait gagner l’élection avec une telle mesure car même si l’usage est très répandu en France, les Français sont très divisés et même s’ils ont été fumeurs à un moment de leur vie beaucoup sont vivement opposés à l’idée de dépénaliser cette drogue.
-                    Et vous qu’en pensez-vous ? Est-il nécessaire selon vous de changer la loi en France ? Qu’en est-il dans votre pays ?</p>
-                <div>
-                    <small><a href="blog-category-01.html" title="">Food</a></small>
-                    <small><a href="single.html" title="">10 July, 2017</a></small>
-                    <small><a href="blog-author.html" title="">by Matilda</a></small>
-                    <a href="#" class="button-suite jump-link">Lire la suite</a>
-                </div>
+            <div class="blog-list clearfix">
+                <div class="blog-box row wow slideInLeft">
+                    <div class="col-md-4">
+                        <div class="post-media">
+                            <a href="single.html" title="">
+                                <img src="img/%E2%80%94Pngtree%E2%80%94social%20media%20icons%20set%20logo_3588882.png"
+                                     alt="" class="img-fluid">
+                                <div class="hovereffect"></div>
+                            </a>
+                        </div><!-- end media -->
+                    </div><!-- end col -->
 
-            </div><!-- end meta -->
-        </div><!-- end blog-box -->
+                    <div class="blog-meta big-meta col-md-8">
+                        <h4><a href="single.html" title="">Saint-Malo</a></h4>
+                        <p class="description-article-text">Je passe mes vacances à Saint-Malo. Vous connaissez ? C’est en Bretagne. J’adore cette région. J’y vais tous les ans. J’ai une maison là-bas. D’habitude, j’y reste trois semaines en été, mais cette année, j’y suis resté seulement deux semaines à cause de mon travail. L’hiver, en général, je n’y vais presque jamais parce qu’il fait plutôt froid.
+                            Saint-Malo, c’est une jolie ville. C’est très touristique avec ses remparts du douzième siècle
+                            (les remparts, REMPART, ça signifie les murs de la ville, ça permet de se protéger quand il y a une guerre).
+                            On les a commencés en 1144. On peut voir aussi de très jolies maisons,
+                            en particulier dans le quartier de la cathédrale Saint-Vincent. Cette cathédrale date aussi du douzième siècle. Il y a aussi un château, des musées et le manoir de Jacques Cartier, le célèbre explorateur qui a découvert le Canada en 1534.</p>
+                        <div>
+                            <small><a href="blog-category-01.html" title="">Food</a></small>
+                            <small><a href="single.html" title="">11 July, 2017</a></small>
+                            <small><a href="blog-author.html" title="">by Matilda</a></small>
+                            <a href="#" class="button-suite jump-link">Lire la suite</a>
+                        </div>
+
+                    </div>
+
+                </div><!-- end meta -->
+            </div><!-- end blog-box -->
 
         <hr class="invis">
 
-        <div class="blog-box row wow slideInLeft">
-            <div class="col-md-4">
-                <div class="post-media">
-                    <a href="single.html" title="">
-                        <img src="img/%E2%80%94Pngtree%E2%80%94social%20media%20icons%20set%20logo_3588882.png"
-                             alt="" class="img-fluid">
-                        <div class="hovereffect"></div>
-                    </a>
-                </div><!-- end media -->
-            </div><!-- end col -->
 
-            <div class="blog-meta big-meta col-md-8">
-                <h4><a href="single.html" title="">Article traduction 1</a></h4>
-                <p class="description-article-text">Cette semaine, des centaines de manifestants se sont rassemblés place de la Bastille pour la marche mondiale du Cannabis. Cette manifestation a lieu chaque année dans plus de 250 villes dans le monde pour demander la dépénalisation de la consommation du cannabis, la régulation de sa production ainsi que la possibilité pour les médecins de le prescrire dans un cadre thérapeutique. Les slogans de la manifestions étaient amusants et originaux, les manifestants criaient notamment
-                    « je ne me drogue pas, je me soigne » ou encore « on veut du bédo bio ».</p>
-                <div>
-                    <small><a href="blog-category-01.html" title="">Food</a></small>
-                    <small><a href="single.html" title="">09 July, 2017</a></small>
-                    <small><a href="blog-author.html" title="">by Hichem</a></small>
+            <div class="blog-list clearfix">
+                <div class="blog-box row wow slideInLeft">
+                    <div class="col-md-4">
+                        <div class="post-media">
+                            <a href="single.html" title="">
+                                <img src="img/%E2%80%94Pngtree%E2%80%94social%20media%20icons%20set%20logo_3588882.png"
+                                     alt="" class="img-fluid">
+                                <div class="hovereffect"></div>
+                            </a>
+                        </div><!-- end media -->
+                    </div><!-- end col -->
 
-                    <a href="#" class="button-suite jump-link">Lire la suite</a>
+                    <div class="blog-meta big-meta col-md-8">
+                        <h4><a href="single.html" title="">Saint-Malo</a></h4>
+                        <p class="description-article-text">Je passe mes vacances à Saint-Malo. Vous connaissez ? C’est en Bretagne. J’adore cette région. J’y vais tous les ans. J’ai une maison là-bas. D’habitude, j’y reste trois semaines en été, mais cette année, j’y suis resté seulement deux semaines à cause de mon travail. L’hiver, en général, je n’y vais presque jamais parce qu’il fait plutôt froid.
+                            Saint-Malo, c’est une jolie ville. C’est très touristique avec ses remparts du douzième siècle
+                            (les remparts, REMPART, ça signifie les murs de la ville, ça permet de se protéger quand il y a une guerre).
+                            On les a commencés en 1144. On peut voir aussi de très jolies maisons,
+                            en particulier dans le quartier de la cathédrale Saint-Vincent. Cette cathédrale date aussi du douzième siècle. Il y a aussi un château, des musées et le manoir de Jacques Cartier, le célèbre explorateur qui a découvert le Canada en 1534.</p>
+                        <div>
+                            <small><a href="blog-category-01.html" title="">Food</a></small>
+                            <small><a href="single.html" title="">11 July, 2017</a></small>
+                            <small><a href="blog-author.html" title="">by Matilda</a></small>
+                            <a href="#" class="button-suite jump-link">Lire la suite</a>
+                        </div>
 
-                </div>
+                    </div>
 
-            </div><!-- end meta -->
-        </div><!-- end blog-box -->
+                </div><!-- end meta -->
+            </div><!-- end blog-box -->
 
     </div>
 
@@ -343,8 +296,7 @@ use App\Models\Users;
 
 
 
-
-            <section class="forms-section wow slideInRight" id="form1-div">
+        <section class="forms-section wow slideInRight" id="form1-div">
                 <h1 class="section-title">Veuillez Connectez </h1>
                 <!--      <div class="forms">
                           <div class="form-wrapper is-active">
@@ -402,9 +354,13 @@ use App\Models\Users;
                         <h1>Status:  Traducteur</h1>
                     </div>
 
+                    <?php elseif(Users::currentUser()->nom==="admin"): ?>
+                        <div>
+                                  <h1>Status:  Admin</h1>
+                        </div>
                     <?php else: ?>
                         <div>
-                                  <h1>Status:  Client</h1>
+                            <h1>Status:  Client</h1>
                         </div>
                     <?php endif;?>
                     <a href="<?=PROOT?>register/logout" class="btn btn-outline-primary btn-lg " style="margin: 20px;">Logout</a>
@@ -424,83 +380,59 @@ use App\Models\Users;
         <div class="form-style-10 ">
             <h1>Demande de devis de traduction<span>demander votre devis facilement en remplissant ce
                             formulaire</span></h1>
-            <form id="traduction_forme">
-                <div class="section"><span>1</span>Nom & prénoms</div>
+            <form  class="form" method="post" enctype="multipart/form-data">
+
+
+
+                <div class="section"><span>1</span>détaille sur la traduction</div>
                 <div class="inner-wrap">
-                    <h4>Nom</h4>
-                    <input type="text" name="nom" id="nom" />
-                    <span class = "error" id="err_nom"></span>
-                    <h4>Prénom</h4>
-                    <input type="text"  name="prenom" id="prenom"/>
-                    <span class = "error" id="err_prenom"></span>
-                </div>
 
-                <div class="section"><span>2</span>Email & Phone</div>
-                <div class="inner-wrap">
+
+
+
+                    <h4>Dèposer le fichier à traduire: </h4><input type="file" name="devis" /><br><br>
+                    <h4>Choisir Le type de traduction</h4>
+                    <select name="type_traduction">
+                        <option value="general" selected="selected">general</option>
+                        <option value="scientifique">scientifique</option>
+                        <option value="siteweb">siteweb</option>
+
+                    </select>
                     <div>
-                        <h4>Email Address <input type="email" name="email" id="email" /></h4>
-                    </div>
 
+                    <h4>Choisir la langue source</h4>
+                    <select name="lang_src">
+                        <option value="Arabe" selected="selected">Arabe</option>
+                        <option value="Francais" >Français</option>
+                        <option value="Anglais">Anglais</option>
+                        <option value="Chinois">Chinois</option>
+                        <option value="Espagnol">Espagnol</option>
+                        <option value="Italien">Italien</option>
+                    </select>
                     <div>
-                        <h4>Numéros de téléphone <input type="text" name="num_tel" id="num_tel" /></h4>
                     </div>
-                    <div>
-                        <h4>Adresse <input type="text" name="adresse" id="adresse" /></h4>
+                        <div>
+                            <h4>Choisir la langue à traduire </h4>
+                            <select name="lang_dest">
+                                <option value="Francais" selected="selected">Français</option>
+                                <option value="Arabe" >Arabe</option>
 
-                    </div>
-
-                    <span class = "error"  id="err_adresse"></span>
-                </div>
-
-                <div class="section"><span>3</span>détaille sur la traduction</div>
-                <div class="inner-wrap">
-                    <div>
-                        <h4>Langue d'origine <input type="text" name="lang_origine" id="lang_origine" /></h4>
-
-                    </div>
-                    <span class = "error" id="err_lang_origine"></span>
-                    <div>
-                        <h4>Langue source <input type="text" name="lang_source" id="lang_source" /></h4>
-
-                    </div>
-                    <span class = "error" id="err_lang_source"></span>
+                                <option value="Anglais">Anglais</option>
+                                <option value="Chinois">Chinois</option>
+                                <option value="Espagnol">Espagnol</option>
+                                <option value="Italien">Italien</option>
+                            </select>
 
 
-                    <h4>Select a file: </h4><input type="file" name="file_upload" id="file_upload"><br><br>
-                    <!--Dropdown primary-->
-                    <div class="dropdown" style="margin-top: 20px; margin-bottom: 20px; align-items: center;">
-
-                        <h4>Type de traduction</h4>
-                        <!--Trigger-->
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" name="type_trad">type
-                            traduction</button>
-                        <!--Menu-->
-                        <div class="dropdown-menu dropdown-primary">
-                            <a class="dropdown-item" name="choix_type_trad" value="Général" href="#">Général</a>
-                            <a class="dropdown-item" name="choix_type_trad" value="Scientifique" href="#">Scientifique</a>
-                            <a class="dropdown-item" name="choix_type_trad" value="Site web" href="#">Site web</a>
                         </div>
 
-                    </div>
-                    <!--/Dropdown primary-->
+                        <h4>Commentaires</h4>
+                        <?= FH::inputBlock('text','','commentaires',$this->devis->commentaires,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
 
-                    <div>
-
-                        <h4>Commentaire et demande spécifique</h4>
-                        <textarea type="text" name="comment" id="comment" cols="40" rows="5"></textarea>
-                        <span class = "error" id="err_comment"></span>
-
-                    </div>
+                        <?= FH::checkboxone('vous êtes un assermentee?','traducteur_assermente',true,['class'=>'form-check-input input-sm'],['class'=>'form-check-inline']) ?>
 
 
-                    <div class="custom-control custom-checkbox " style="margin-top: 30px;margin-bottom: 30px;">
-                        <input type="checkbox" value="assermentee" class="margin_form mw-100 custom-control-input" id="customCheck" name="assermentee">
-                        <label class="custom-control-label" for="customCheck">traducteurs assermentée</label>
-
-                    </div>
-
-                    <!--my captcha-->
+                        <!--my captcha-->
                     <div class="g-recaptcha" data-sitekey="6LcLissUAAAAACdWJIJtwj5qcwwxyxkNQOdXhWPH"
                          style="margin-top: 30px;"></div>
 
@@ -508,26 +440,11 @@ use App\Models\Users;
 
 
                 </div>
-                <div class="button-section text-center" id="submit_div">
-                    <button type="submit" name="submit_trad_form" class="btn btn-primary btn-md w-75 p-3">Submit</button>
+                <?= FH::submitBlock('Envoyer devis', ['class'=>'btn btn-primary btn-lg'],['class'=>'form-group'])?>
 
-                </div>
             </form>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </section>
@@ -536,6 +453,4 @@ use App\Models\Users;
 
 
 
-
-
-    <?php $this->end(); ?>
+<?php $this->end(); ?>

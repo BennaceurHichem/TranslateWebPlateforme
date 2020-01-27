@@ -23,7 +23,7 @@
         $this->{$model.'Model'} = new $modelPath();
       }
       else{
-          die("ther is no model exists in the load_model");
+          die("there is no model exists in the load_model");
       }
     }
 

@@ -88,7 +88,7 @@ class Users extends Model {
           $this->runValidation(new EmailValidator($this, ['field'=>'email','msg'=>'You must provide a valid email address']));
           $this->runValidation(new MaxValidator($this,['field'=>'email','rule'=>150,'msg'=>'Email must be less than 150 characters.']));
 
-          $this->runValidation(new MinValidator($this,['field'=>'nom','rule'=>6,'msg'=>'Username must be at least 6 characters.']));
+          $this->runValidation(new MinValidator($this,['field'=>'nom','rule'=>3,'msg'=>'Username must be at least 6 characters.']));
           $this->runValidation(new MaxValidator($this,['field'=>'nom','rule'=>150,'msg'=>'Username must be less than 150 characters.']));
           $this->runValidation(new RequiredValidator($this,['field'=>'pass','msg'=>'Password is required.']));
           $this->runValidation(new MinValidator($this,['field'=>'pass','msg'=>'Password must be a minimum of 6 characters']));
@@ -108,7 +108,7 @@ class Users extends Model {
       $this->runValidation(new EmailValidator($this, ['field'=>'email','msg'=>'You must provide a valid email address']));
     $this->runValidation(new MaxValidator($this,['field'=>'email','rule'=>150,'msg'=>'Email must be less than 150 characters.']));
 
-      $this->runValidation(new MinValidator($this,['field'=>'nom','rule'=>6,'msg'=>'Username must be at least 6 characters.']));
+      $this->runValidation(new MinValidator($this,['field'=>'nom','rule'=>3,'msg'=>'Username must be at least 6 characters.']));
     $this->runValidation(new MaxValidator($this,['field'=>'nom','rule'=>150,'msg'=>'Username must be less than 150 characters.']));
     $this->runValidation(new RequiredValidator($this,['field'=>'pass','msg'=>'Password is required.']));
     $this->runValidation(new MinValidator($this,['field'=>'pass','msg'=>'Password must be a minimum of 6 characters']));
@@ -241,5 +241,35 @@ class Users extends Model {
   }
 
 
+
+    public function findAll(){
+
+        return $this->find();
+    }
+    public function findAllTraducteur($estTrad){
+        $conditions = [
+            'conditions' => 'estTrad = ?',
+            'bind' => [$estTrad]
+        ];
+
+
+
+        return $this->find($conditions);
+    }
+    public function findAllClients($estTrad){
+        $conditions = [
+            'conditions' => 'estTrad = ?',
+            'bind' => [$estTrad]
+        ];
+
+
+
+        return $this->find($conditions);
+    }
+
+
+    public function displayName(){
+        return $this->nom . ' ' . $this->prenom;
+    }
 
 }

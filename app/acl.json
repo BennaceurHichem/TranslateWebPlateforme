@@ -2,10 +2,11 @@
   "Guest" : {
     "denied" : {},
     "Home" : ["*"],
-    "Register" : ["login", "register"],
+    "Register" : ["login", "register","admin"],
     "Restricted" : ["*"],
     "à propos" : ["*"],
     "Contacts" : ["*"]
+
   },
   "LoggedIn" : {
     "denied" : {
