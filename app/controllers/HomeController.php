@@ -21,6 +21,18 @@
 
 
 
+
+/*
+ *
+ * Test de linsertion de traducteur_id dans la table devis
+                $devis = new Devis();
+                $devis->id_devis = 1;
+                H::dnd($devis->insertIdTrad(100));
+*/
+
+
+        $trad = new Traducteur();
+
         $this->load_model('Devis');
         $this->load_model('Users');
     }
@@ -122,7 +134,10 @@
 
 
             if($devis->save()){
-                Router::redirect('home');
+
+                $_SESSION['id_devis'] = $devis->lastIdDevis();
+                $_SESSION['devis_path']=$dest;
+                Router::redirect('home/listetraddevis');
             }
 
 
@@ -178,6 +193,8 @@
                 {
                     $_REQUEST['est_assermente'] = "0";
                     $_REQUEST['est_approuve'] = "0";
+
+                    //H::dnd($this->request->get());
                 }
 
 
@@ -222,7 +239,7 @@
 
 
                 $traducteur->assign($this->request->get());
-                //H::dnd($traducteur);
+
                 if($traducteur->save()){
                     Router::redirect('home');
                 }
@@ -446,6 +463,85 @@
           }
           Router::redirect('home/adminhome');
       }
+
+      public function listetraddevisAction(){
+
+        $devis = new Devis();
+          $errors=[];
+          if(!isset($_REQUEST)){
+              $errors=["veuillez selectionez un traducteur"];
+          }
+          if($this->request->isPost()){
+
+
+              if(isset($_REQUEST) && !empty($_SESSION['id_devis'])){
+
+                  $devis->insertIdTrad($_SESSION['id_devis'],array_key_first($_REQUEST));
+
+              }
+
+
+
+
+          }
+          $this->view->displayErrors = $errors;
+          $this->view->render('home/listetraddevis');
+      }
+
+        public function detailledevisAction($id){
+
+                    $devis = new Devis();
+            $currentDevis = $devis->findByIdDevis($id);
+
+
+
+            if($this->request->isPost()){
+
+
+                //si le formulaire de refus qui a ete envoyee à l'aide de l'input refus, changer l'etat vers abondonne
+
+                if(array_key_exists("refus",$_REQUEST)){
+                    $nouvelEtat = "abandonne";
+                    $currentDevis[0]->changeEtat($currentDevis[0]->id_devis,$nouvelEtat);
+
+
+
+                }
+                else{
+                    //si le fromaulaire d'acceptance qui a ete envoyer
+
+                    //traitement des erreurs
+                    if(empty($_REQUEST['prix']))
+                    {
+                        $devis->addErrorMessage('prix','veuillez remplire votre prix ');
+                    }elseif(!is_numeric($_REQUEST['prix'])){
+                        $devis->addErrorMessage('prix','Le prix doit être des chiffres ');
+                    }else{
+
+                        //chnagement d'etat de devis et insertion de prix
+                        $prix = $_REQUEST['prix'];
+                        $currentDevis[0]->insertPrix($currentDevis[0]->id_devis,(int)$prix);
+                        $nouvelEtat = "acceptee";
+                        $currentDevis[0]->changeEtat($currentDevis[0]->id_devis,$nouvelEtat);
+                    }
+
+
+                }
+
+
+
+
+
+
+            }
+
+
+            $this->view->devis = $currentDevis;
+            $this->view->displayErrors = $devis->getErrorMessages();
+            $this->view->render('home');
+
+        }
+
 
 
 

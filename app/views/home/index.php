@@ -3,8 +3,9 @@
 use Core\FH;
 use Core\H;
 use App\Models\Users;
-
+use App\Models\Traducteur;
 use App\Models\Devis;
+use App\Models\Clientt;
 ?>
 <?php $this->setSiteTitle('Home'); ?>
 
@@ -298,54 +299,7 @@ use App\Models\Devis;
 
         <section class="forms-section wow slideInRight" id="form1-div">
                 <h1 class="section-title">Veuillez Connectez </h1>
-                <!--      <div class="forms">
-                          <div class="form-wrapper is-active">
-                              <button type="button" class="switcher switcher-login">
-                                  Connexion
-                                  <span class="underline"></span>
-                              </button>
-                              <form class="form form-login" id="connexion_forme"  action="connexion_form.php">
-                                  <fieldset>
-                                      <legend>Please, enter your email and password for login.</legend>
-                                      <div class="input-block">
-                                          <label for="login-email">E-mail</label>
-                                          <input id="login-email" name="email_connexion" type="email" required>
 
-                                      </div>
-                                      <div class="input-block">
-                                          <label for="login-password">Password</label>
-                                          <input id="login-password" name="pass_connexion" type="password" required>
-                                      </div>
-                                  </fieldset>
-                                  <button type="submit" name="submit_connexion_form" class="btn-login">Connexion</button>
-                              </form>
-                          </div>
-                          <div class="form-wrapper">
-                              <button type="button" class="switcher switcher-signup">
-                                  Inscription
-                                  <span class="underline"></span>
-                              </button>
-                              <form class="form form-signup" id="inscription_form" action="inscription_form.php">
-                                  <fieldset>
-                                      <legend>Please, enter your email, password and password confirmation for sign
-                                          up.</legend>
-                                      <div class="input-block">
-                                          <label for="signup-email">E-mail</label>
-                                          <input id="signup-email" name="email_inscription" type="email" required>
-                                      </div>
-                                      <div class="input-block">
-                                          <label for="signup-password">Password</label>
-                                          <input name="pass_inscription" id="signup-password" type="password" required>
-                                      </div>
-                                      <div class="input-block">
-                                          <label for="signup-password-confirm">Confirm password</label>
-                                          <input name="confirm_pass_inscription" id="signup-password-confirm" type="password" required>
-                                      </div>
-
-
-                                  </fieldset>
-                                  <button type="submit" name="submi_inscription_form" class="btn-signup">Inscription</button>
-                              </form>   -->
                 <?php if(Users::currentUser()): ?>
                 <div>
                     <h1>Hello <?=Users::currentUser()->nom?></h1>
@@ -374,9 +328,12 @@ use App\Models\Devis;
 
 
 
-            </section>
+        </section>
+
+<?php if(Users::currentUser()): ?>
 
 
+        <?php if(!Users::currentUser()->estTrad && Users::currentUser()->nom !="admin" ): ?>
         <div class="form-style-10 ">
             <h1>Demande de devis de traduction<span>demander votre devis facilement en remplissant ce
                             formulaire</span></h1>
@@ -429,7 +386,6 @@ use App\Models\Devis;
                         <h4>Commentaires</h4>
                         <?= FH::inputBlock('text','','commentaires',$this->devis->commentaires,['class'=>'form-control input-sm'],['class'=>'form-group']) ?>
 
-                        <?= FH::checkboxone('vous êtes un assermentee?','traducteur_assermente',true,['class'=>'form-check-input input-sm'],['class'=>'form-check-inline']) ?>
 
 
                         <!--my captcha-->
@@ -444,7 +400,100 @@ use App\Models\Devis;
 
             </form>
         </div>
+         <?php endif;?>
+
+        <?php if(Users::currentUser()->estTrad):
+
+            $traducteur = new Traducteur();
+            $traducteur->id_traducteur = Users::currentUser()->id_user;
+
+            $deviss = $traducteur->getAllDevis( $traducteur->id_traducteur);
+           ;?>
+
+
+                 <table class="table table-striped table-condensed table-bordered table-hover">
+        <thead>
+        <th>Nom et Prenom client</th>
+        <th>type traduction</th>
+        <th>Language source </th>
+        <th>Language destination </th>
+
+        <th></th>
+        </thead>
+        <tbody>
+        <?php foreach($deviss as $devis): ?>
+            <tr>
+                <td>
+                    <a href="#">
+                        <?= $devis->nom." ".$devis->prenom; ?>
+                    </a>
+                </td>
+
+                <td><?= $devis->type_traduction;?></td>
+                <td><?= $devis->lang_src;?></td>
+                <td><?= $devis->lang_dest;?></td>
+                <td></td>
+
+                <td>
+                    <a href="<?=PROOT?>/home/detailledevis/<?=$devis->id_devis?>" class="btn btn-info btn-xs">
+                        <i class="glyphicon glyphicon-pencil"></i> Accepter/Refuser
+                    </a>
+
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+        <?php endif;?>
+
+
+        <?php if(!Users::currentUser()->estTrad && Users::currentUser()->nom !="admin"):
+
+            $client = new Clientt();
+            $client->id_client = Users::currentUser()->id_user;
+
+            $deviss = $client->getAllDevis( $client->id_client);
+            ?>
+
+            <center>
+                <h1>Liste des devis envoyè </h1>
+
+
+            </center>
+
+            <table class="table table-striped table-condensed table-bordered table-hover">
+                <thead>
+                <th>Type traduction</th>
+                <th>Etat </th>
+                <th>Language source </th>
+                <th>Language destination </th>
+                <th>identifiant de traducteur </th>
+
+                <th></th>
+                </thead>
+                <tbody>
+                <?php foreach($deviss as $devis): ?>
+                    <tr>
+                     
+
+                        <td><?= $devis->type_traduction;?></td>
+                        <td><?= $devis->etat;?></td>
+                        <td><?= $devis->lang_src;?></td>
+                        <td><?= $devis->lang_dest;?></td>
+                        <td><?= $devis->id_traducteur;?></td>
+                        <td></td>
+
+
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif;?>
+
     </div>
+        <?php endif;?>
+
+
 
 
 </section>

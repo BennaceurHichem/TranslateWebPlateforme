@@ -10,7 +10,7 @@ use Core\Model;
 class Clientt extends Model
 {
 
-   private  $id_client;
+   public  $id_client;
 
     public function __construct()
     {
@@ -33,5 +33,17 @@ class Clientt extends Model
         $this->_db->insert($this->_table, $fields);
     }
 
+
+    public function getAllDevis($id){
+        $devis = new Devis();
+        if(!empty($id)){
+            return $devis->findByIdClient($id);
+
+        }else{
+            return false;
+        }
+
+
+    }
 
 }

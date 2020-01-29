@@ -6,10 +6,16 @@ namespace App\Models;
 
 use Core\H;
 use Core\Model;
+use Core\Validators\EmailValidator;
+use Core\Validators\MaxValidator;
+use Core\Validators\MinValidator;
+use Core\Validators\NumericValidator;
+use Core\Validators\RequiredValidator;
+use Core\Validators\UniqueValidator;
 
 class Devis extends Model
 {
-    public $id_devis, $nom, $prenom, $email, $numero, $adresse, $type_traduction, $commentaires, $etat, $traducteur_assermente, $date, $id_client, $lang_src, $lang_dest;
+    public $id_devis, $id_traducteur,$prix,$nom, $prenom, $email, $numero, $adresse, $type_traduction, $commentaires, $etat, $date, $id_client, $lang_src, $lang_dest;
 
     public function __construct()
     {
@@ -49,4 +55,75 @@ class Devis extends Model
     }
 
 
+
+    public function insertIdTrad($id_devis,$id_trad){
+
+        $fields = [
+            "id_traducteur"=>$id_trad,
+        ];
+
+        $save = $this->update($id_devis, $fields);
+
+        $this->afterSave();
+
+        return $save;
+
+
+    }
+
+    public function insertPrix($id_devis, $prix){
+
+        $fields = [
+            "prix"=>$prix,
+        ];
+
+        $save = $this->update($id_devis, $fields);
+
+        $this->afterSave();
+
+        return $save;
+    }
+
+    public function changeEtat($id_devis, $newState){
+
+        $fields = [
+            "etat"=>$newState,
+        ];
+
+        $save = $this->update($id_devis, $fields);
+
+        $this->afterSave();
+
+        return $save;
+    }
+
+
+    public function findByIdTrad($id) {
+        return $this->find(['conditions'=>"id_traducteur = ?", 'bind' => [$id]]);
+    }
+    public function findByIdClient($id) {
+        return $this->find(['conditions'=>"id_client = ?", 'bind' => [$id]]);
+    }
+    public function findByIdDevis($id) {
+        return $this->find(['conditions'=>"id_devis = ?", 'bind' => [$id]]);
+    }
+    public function lastIdDevis(){
+        return $this->lastId();
+    }
+
+
+    public function validator(){
+
+
+            $this->runValidation(new RequiredValidator($this,['field'=>'prix','msg'=>"Veuillez entrez le prix avant d\'accpeter le devs " ]));
+            $this->runValidation(new NumericValidator($this,['field'=>'prix','msg'=>"Le prix doit etre numerique " ]));
+
+
+
+
+
+
+
+
+    }
 }

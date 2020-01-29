@@ -30,7 +30,7 @@ class Traducteur extends \Core\Model {
 
     public function __construct()
     {
-        $this->compteur++;
+
         $table = 'traducteur';
 
         /** @var TYPE_NAME $table
@@ -41,7 +41,17 @@ class Traducteur extends \Core\Model {
 
 
 
+        public function getAllDevis($id){
+            $devis = new Devis();
+            if(!empty($id)){
+                return $devis->findByIdTrad($id);
 
+            }else{
+                return false;
+            }
+
+
+        }
 
     public function save() {
 
@@ -54,17 +64,18 @@ class Traducteur extends \Core\Model {
             $fields = H::getObjectProperties($this);
 
 
-            if($this->compteur===1) {
+            if($this->findById($this->id_traducteur)) {
+
+                $save = $this->update($this->id_traducteur, $fields);
+                $this->afterSave();
+                return $save;
+
+            } else {
 
 
                 $save = $this->insert($fields);
                 $this->afterSave();
                 $this->compteur++;
-                return $save;
-            } else {
-
-                $save = $this->update($this->id_traducteur, $fields);
-                $this->afterSave();
                 return $save;
             }
 

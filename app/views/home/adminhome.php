@@ -30,7 +30,7 @@ use Core\H;
         <?php foreach($this->users as $user): ?>
             <tr>
                 <td>
-                    <a href="<?=PROOT?>contacts/details/<?=$user->id_user?>">
+                    <a href="<?=PROOT?>home/edit/<?=$user->id_user?>">
                         <?= $user->displayName(); ?>
                     </a>
                 </td>
