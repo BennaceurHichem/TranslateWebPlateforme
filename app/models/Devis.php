@@ -15,7 +15,7 @@ use Core\Validators\UniqueValidator;
 
 class Devis extends Model
 {
-    public $id_devis, $id_traducteur,$prix,$nom, $prenom, $email, $numero, $adresse, $type_traduction, $commentaires, $etat, $date, $id_client, $lang_src, $lang_dest;
+    public $id_devis, $id_traducteur,$prix,$nom, $prenom, $email, $numero, $adresse, $type_traduction, $commentaires, $etat, $date, $id_client, $lang_src, $lang_dest,$path;
 
     public function __construct()
     {
@@ -28,7 +28,7 @@ class Devis extends Model
     {
 
 
-        $this->validator();
+        //$this->validator();
         // die($this->_validates);
         if ($this->_validates) {
             $this->beforeSave();
@@ -55,6 +55,27 @@ class Devis extends Model
     }
 
 
+    public function saveNew()
+    {
+
+
+        //$this->validator();
+        // die($this->_validates);
+        if ($this->_validates) {
+            $this->beforeSave();
+
+            $fields = H::getObjectProperties($this);
+
+            // determine whether to update or insert
+
+            $save = $this->insert($fields);
+            $this->afterSave();
+            return $save;
+
+        }
+
+        return false;
+    }
 
     public function insertIdTrad($id_devis,$id_trad){
 
@@ -107,6 +128,11 @@ class Devis extends Model
     public function findByIdDevis($id) {
         return $this->find(['conditions'=>"id_devis = ?", 'bind' => [$id]]);
     }
+//get the last inserrted id
+    public function findLastIdDevis() {
+        return $this->findFirst([  'order'=>"id_devis desc"])->id_devis ;
+    }
+
     public function lastIdDevis(){
         return $this->lastId();
     }
@@ -125,5 +151,12 @@ class Devis extends Model
 
 
 
+    }
+
+
+
+    public function findAll(){
+
+        return $this->find();
     }
 }

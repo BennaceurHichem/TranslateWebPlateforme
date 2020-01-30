@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b44b0976-416b-4237-b287-b8548207e2a8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/home/detailledevis.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/home/listetraddevis.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/PieceJointe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/home/alldevis.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/DevisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/DevisController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Clientt.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Clientt.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Devis.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Devis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Traducteur.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Traducteur.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/home/adminhome.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/adminhome.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/blog.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/listetraducteur.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/listetraducteur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/—Pngtree—social media icons set logo_3588882.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/recrutement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/recrutement.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +82,7 @@
       <workItem from="1579861934075" duration="16921000" />
       <workItem from="1579944684715" duration="40808000" />
       <workItem from="1580114523885" duration="22302000" />
-      <workItem from="1580311956003" duration="9079000" />
+      <workItem from="1580311956003" duration="27189000" />
     </task>
     <servers />
   </component>
@@ -107,24 +102,24 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="371" y="93" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.689@0.0.1280.689" timestamp="1579652758001" />
-    <state x="371" y="101" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580314887371">
+    <state x="371" y="101" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580387932630">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="371" y="101" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689/1920.0.960.570@0.0.1280.689" timestamp="1580314887371" />
-    <state x="371" y="101" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1580068958422" />
+    <state x="371" y="101" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1580387932630" />
     <state x="421" y="101" key="FileChooserDialogImpl" timestamp="1579691097720">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="421" y="101" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1579691097720" />
-    <state x="437" y="160" key="NewPhpClassDialog" timestamp="1580055911597">
+    <state x="437" y="160" key="NewPhpClassDialog" timestamp="1580387775707">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="437" y="160" key="NewPhpClassDialog/0.0.1280.689@0.0.1280.689" timestamp="1580055911597" />
-    <state x="477" y="269" key="NewPhpFileDialog" timestamp="1580312210948">
+    <state x="437" y="160" key="NewPhpClassDialog/0.0.1280.689@0.0.1280.689" timestamp="1580387775707" />
+    <state x="477" y="269" key="NewPhpFileDialog" timestamp="1580378540789">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="477" y="269" key="NewPhpFileDialog/0.0.1280.689/1920.0.960.570@0.0.1280.689" timestamp="1580312210948" />
-    <state x="477" y="269" key="NewPhpFileDialog/0.0.1280.689@0.0.1280.689" timestamp="1580233980963" />
+    <state x="477" y="269" key="NewPhpFileDialog/0.0.1280.689@0.0.1280.689" timestamp="1580378540789" />
     <state x="93" y="93" width="1095" height="504" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579651656051">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -142,11 +137,11 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="295" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.689@0.0.1280.689" timestamp="1579478570351" />
-    <state x="335" y="77" width="836" height="606" key="find.popup" timestamp="1580322193568">
+    <state x="335" y="77" width="836" height="606" key="find.popup" timestamp="1580337546372">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="335" y="77" width="836" height="606" key="find.popup/0.0.1280.689/1920.0.960.570@0.0.1280.689" timestamp="1580322193568" />
-    <state x="335" y="77" width="836" height="606" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1580243101289" />
+    <state x="335" y="77" width="836" height="606" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1580337546372" />
     <state x="282" y="72" width="700" height="530" key="recent.locations.popup" timestamp="1579509299877">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

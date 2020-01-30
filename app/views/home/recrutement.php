@@ -3,7 +3,7 @@
 use Core\FH;
 use App\Models\Users;
 use Core\H;
-
+use \Core\Session;
 ?>
 <?php $this->start('head'); ?>
 

@@ -1,6 +1,7 @@
 <?php
   namespace App\Controllers;
   use App\Models\Devis;
+  use App\Models\PieceJointe;
   use App\Models\Traducteur;
   use Core\Controller;
   use Core\H;
@@ -104,7 +105,7 @@
                 }
 
                 if(in_array($file_ext,$extensions)=== false){
-                    $errors[]="extension not allowed";
+                    $errors="Verifier votre fichier et son extension ";
                 }
 
                 $file_name_id = $idDevis."-"."devis_".$file_name;
@@ -128,15 +129,41 @@
              * FIN TRAITEMTN FICHIER DEVIS
              */
 
+            /*
+             * DEBUT TRAITMTN DE PIECE_JOINTE
+             *
+             */
+
+
+            //set piece jointe values
+            $piece_jointe  = new PieceJointe();
+            //Remplissage de la piece jointe
+
+
+            $piece_jointe->type = "devis";
+            $piece_jointe->description = "c'est un devis d'un client";
+            $piece_jointe->id_user = Users::currentUser()->id_user;
+            $piece_jointe->path=$dest;
 
             $devis->assign($this->request->get());
 
+            //Sauvegarder le chemin de devis
+            $devis->path = $dest;
+            $devis->id_devis = $devis->findLastIdDevis()+1;
 
 
-            if($devis->save()){
+            if($devis->saveNew()){
 
-                $_SESSION['id_devis'] = $devis->lastIdDevis();
+                $_SESSION['id_devis'] = $devis->findLastIdDevis();
                 $_SESSION['devis_path']=$dest;
+
+                //Insertion piece jointe devis
+                if(!$piece_jointe->save()){
+                    Router::redirect('home');
+                }
+
+
+
                 Router::redirect('home/listetraddevis');
             }
 
@@ -180,12 +207,26 @@
       public function recrutementAction(){
           $db = DB::getInstance();
 
+
+
+
             $traducteur  =  new Traducteur();
+
+
+
+
+
+
+
 
             if($this->request->isPost()){
 
+
+
+
+
                         //vu que le id n'est pas auto increment il faut l'ajouter dans la requete
-                    $traducteur->id_traducteur = Users::currentUser()->id_user;
+                $traducteur->id_traducteur = Users::currentUser()->id_user;
 
 
 
@@ -238,9 +279,22 @@
                 }
 
 
+                //set piece jointe values
+                $piece_jointe  = new PieceJointe();
+                    //Remplissage de la piece jointe
+
+
+                $piece_jointe->type = "cv";
+                $piece_jointe->description = "c'est un cv d'un traducteur";
+                $piece_jointe->id_user = Users::currentUser()->id_user;
+                $piece_jointe->path=$dest;
+
                 $traducteur->assign($this->request->get());
 
                 if($traducteur->save()){
+                    if(!$piece_jointe->save()){
+                        Router::redirect('home/recrutement');
+                    }
                     Router::redirect('home');
                 }
 
@@ -438,6 +492,15 @@
 
       }
 
+      public function alldevisAction(){
+
+            $devis = new Devis();
+            $deviss = $devis->findAll();
+
+          $this->view->deviss = $deviss;
+          $this->view->render('home/alldevis');
+      }
+
       public function editAction($id){
           $user = $this->UsersModel->findByUserId((int)$id);
           if(!$user) Router::redirect('home/adminhome');
@@ -481,7 +544,7 @@
               }
 
 
-
+              Router::redirect('home/index');
 
           }
           $this->view->displayErrors = $errors;
@@ -523,6 +586,9 @@
                         $currentDevis[0]->insertPrix($currentDevis[0]->id_devis,(int)$prix);
                         $nouvelEtat = "acceptee";
                         $currentDevis[0]->changeEtat($currentDevis[0]->id_devis,$nouvelEtat);
+
+                        Router::redirect('home/index');
+
                     }
 
 
@@ -538,7 +604,7 @@
 
             $this->view->devis = $currentDevis;
             $this->view->displayErrors = $devis->getErrorMessages();
-            $this->view->render('home');
+            $this->view->render('home/detailledevis');
 
         }
 

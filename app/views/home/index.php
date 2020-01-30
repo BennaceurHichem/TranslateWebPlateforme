@@ -348,6 +348,7 @@ use App\Models\Clientt;
 
 
                     <h4>Dèposer le fichier à traduire: </h4><input type="file" name="devis" /><br><br>
+
                     <h4>Choisir Le type de traduction</h4>
                     <select name="type_traduction">
                         <option value="general" selected="selected">general</option>
@@ -417,10 +418,12 @@ use App\Models\Clientt;
         <th>type traduction</th>
         <th>Language source </th>
         <th>Language destination </th>
+        <th>ètat de devis  </th>
 
-        <th></th>
+
         </thead>
         <tbody>
+        <?php if(isset($deviss)): ?>
         <?php foreach($deviss as $devis): ?>
             <tr>
                 <td>
@@ -432,16 +435,31 @@ use App\Models\Clientt;
                 <td><?= $devis->type_traduction;?></td>
                 <td><?= $devis->lang_src;?></td>
                 <td><?= $devis->lang_dest;?></td>
-                <td></td>
+
 
                 <td>
-                    <a href="<?=PROOT?>/home/detailledevis/<?=$devis->id_devis?>" class="btn btn-info btn-xs">
+                         <?php if($devis->etat==="pas-encore-demarre"): ?>
+                    <a href="<?=PROOT?>home/detailledevis/<?=$devis->id_devis?>" class="btn btn-info btn-xs">
                         <i class="glyphicon glyphicon-pencil"></i> Accepter/Refuser
                     </a>
+                         <?php endif; ?>
 
+                    <?php if($devis->etat==="acceptee"): ?>
+                        <a href="#" class="btn btn-success btn-xs btn-success" style="pointer-events: none;">
+                            <i class="fas fa-check"></i> Acceptèe
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if($devis->etat==="abandonne"): ?>
+                        <a href="#" style="pointer-events: none;" class="btn btn-danger btn-xs btn-danger">
+                            <i class="fa fa-close"></i>Refusée
+                        </a>
+                    <?php endif; ?>
                 </td>
             </tr>
         <?php endforeach; ?>
+
+        <?php endif; ?>
         </tbody>
     </table>
         <?php endif;?>
@@ -464,12 +482,13 @@ use App\Models\Clientt;
             <table class="table table-striped table-condensed table-bordered table-hover">
                 <thead>
                 <th>Type traduction</th>
-                <th>Etat </th>
                 <th>Language source </th>
                 <th>Language destination </th>
-                <th>identifiant de traducteur </th>
 
-                <th></th>
+
+                <th>ètat de devis  </th>
+
+
                 </thead>
                 <tbody>
                 <?php foreach($deviss as $devis): ?>
@@ -477,10 +496,32 @@ use App\Models\Clientt;
                      
 
                         <td><?= $devis->type_traduction;?></td>
-                        <td><?= $devis->etat;?></td>
+
                         <td><?= $devis->lang_src;?></td>
                         <td><?= $devis->lang_dest;?></td>
-                        <td><?= $devis->id_traducteur;?></td>
+                        <td>
+                            <?php if($devis->etat==="pas-encore-demarre"): ?>
+                                <a href="#" class="btn btn-info btn-xs" style="pointer-events: none;">
+                                    <i class="fas fa-clock"></i> Pas encore traitèe
+                                </a>
+                            <?php endif; ?>
+
+                            <?php if($devis->etat==="acceptee"): ?>
+                                <a href="#" class="btn btn-success btn-xs btn-success" style="pointer-events: none;">
+                                    <i class="fas fa-check"></i> Acceptèe
+                                </a>
+                            <?php endif; ?>
+
+                            <?php if($devis->etat==="abandonne"): ?>
+                                <a href="#" style="pointer-events: none;" class="btn btn-danger btn-xs btn-danger">
+                                    <i class="fa fa-close"></i>Refusée
+                                </a>
+                            <?php endif; ?>
+
+
+
+
+                        </td>
                         <td></td>
 
 

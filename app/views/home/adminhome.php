@@ -11,6 +11,7 @@ use Core\H;
         <center>
             <a href="<?=PROOT?>/home/listetraducteur" class="btn btn-primary btn-xs btn" role="button" >Liste des traducteurs</a>
             <a href="<?=PROOT?>/home/listeclient" class="btn btn-primary btn-xs"role="button" >Liste des clients</a>
+            <a href="<?=PROOT?>/home/alldevis" class="btn btn-primary btn-xs"role="button" >Liste des devis</a>
 
         </center>
 
