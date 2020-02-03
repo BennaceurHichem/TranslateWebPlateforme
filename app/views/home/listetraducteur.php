@@ -6,26 +6,38 @@ use App\Models\Users;
 use Core\H;
 
 ?>
+<?php $this->start('head');?>
+    <!-- bootstrap tables  -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+<?php $this->end(); ?>
+
 
 <?php $this->start('body');?>
 
     <center>
         <a href="<?=PROOT?>/home/listeclient" class="btn btn-primary btn-xs btn" role="button" >LISTE DES CLIENTS</a>
-        <a href="<?=PROOT?>/home/adminhome" class="btn btn-primary btn-xs"role="button" >LISTE DES UTILISATEURS</a>
+        <a href="<?=PROOT?>/home/adminhome" class="btn btn-primary btn-xs" role="button" >LISTE DES UTILISATEURS</a>
 
     </center>
     <h2 class="text-center">LISTE DES TRADUCTEURS</h2>
 
 
-    <table id="table" class="table table-striped table-condensed table-bordered table-hover">
-        <thead>
-        <th>nom et prenom</th>
-        <th>email</th>
-        <th>adresse</th>
-        <th>assermentè</th>
-        <th>approuvè</th>
+    <table class="table table-striped table-condensed table-bordered table-hover"
+           data-show-search-button="true"
+           data-page-size="5"
+           data-toggle="table"
+           data-pagination="true"
+           data-search="true">
 
-        <th></th>
+        <thead>
+        <th data-sortable="true">nom et prenom</th>
+        <th data-sortable="true">email</th>
+        <th data-sortable="true">adresse</th>
+        <th data-sortable="true">assermentè</th>
+        <th data-sortable="true">approuvè</th>
+
+
         </thead>
         <tbody>
         <?php foreach($this->traducteurs as $traducteur):
@@ -70,101 +82,6 @@ use Core\H;
 
 
 
-
-    <!-- Table with panel -->
-
-
-    <form>
-    <div class="px-4">
-
-        <div class="table-wrapper">
-            <!--Table-->
-            <table  id="table" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-
-                <!--Table head-->
-                <thead>
-                <tr>
-
-                    <th class="th-sm">
-                        <a>Choix  de Traducteur
-                            <i class="fas fa-sort ml-1"></i>
-                        </a>
-                    </th>
-                    <th class="th-sm">
-                        <a href="">NOM COMPLET
-                            <i class="fas fa-sort ml-1"></i>
-                        </a>
-                    </th>
-                    <th class="th-sm">
-                        <a href="">EMAIL
-                            <i class="fas fa-sort ml-1"></i>
-                        </a>
-                    </th>
-                    <th class="th-sm">
-                        <a href="">ADresse
-                            <i class="fas fa-sort ml-1"></i>
-                        </a>
-                    </th>
-                    <th class="th-sm">
-                        <a href="">EST_ASSERMENTE
-                            <i class="fas fa-sort ml-1"></i>
-                        </a>
-                    </th>
-                    <th class="th-sm">
-                        <a href="">EST_APPROUVE
-                            <i class="fas fa-sort ml-1"></i>
-                        </a>
-                    </th>
-                </tr>
-                </thead>
-                <!--Table head-->
-
-                <!--Table body-->
-                <tbody>
-
-
-
-                <?php foreach($this->traducteurs as $traducteur):
-
-                    //les traducteurs de la table traducteur
-                    $tradInstance  = new Traducteur();
-                    //trad element est un tradcuteur de la table traducteur
-                    $tradElement = $tradInstance->findById($traducteur->id_user);
-
-
-                    ?>
-                    <tr>
-                        <th scope="row">
-                            <?= FH::checkboxone('','id_traducteur',false,['class'=>'form-check-input input-sm'],['class'=>'form-check-inline']) ?>
-
-                        </th>
-                        <td><a href="#">
-                                <?= $traducteur->displayName(); ?>
-                            </a>
-                        </td>
-
-                        <td><?= $traducteur->email;?></td>
-                        <td><?= $traducteur->adresse;?></td>
-                        <td><?= $tradElement[0]->est_approuve;?></td>
-                        <td><?= $tradElement[0]->est_assermente?></td>
-
-                    </tr>
-
-
-                <?php endforeach; ?>
-                </tbody>
-                <!--Table body-->
-            </table>
-            <!--Table-->
-        </div>
-
-
-    </div>
-        <center>
-        <?= FH::submitBlock('Choisir un traducteur ', ['class'=>'btn btn-primary btn-lg'],['class'=>'form-group'])?>
-        </center>
-    </form>
-    </div>
 
 
 <script>

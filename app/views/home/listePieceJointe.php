@@ -6,6 +6,13 @@ use Core\H;
 
 ?>
 
+<?php $this->start('head');?>
+    <!-- bootstrap tables  -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+<?php $this->end(); ?>
+
+
 <?php $this->start('body');?>
 
     <center>
@@ -25,31 +32,31 @@ use Core\H;
            data-search="true"
     >
         <thead>
-        <th data-sortable="true">Nom et Prenom</th>
-        <th data-sortable="true">email</th>
-        <th data-sortable="true">adresse</th>
+        <th>Type de la pièce jointe </th>
+        <th>Pièce jointe</th>
+        <th>Owner </th>
 
 
         <th></th>
         </thead>
         <tbody>
-        <?php foreach($this->clients as $client): ?>
+        <?php foreach($this->piece_jointes as $piece): ?>
             <tr>
-                <td>
-                    <a href="#">
-                        <?= $client->displayName(); ?>
-                    </a>
-                </td>
 
-                <td><?= $client->email;?></td>
-                <td><?= $client->adresse;?></td>
-                <td></td>
+                <td><?= $piece->type;?></td>
+                <td><a href="<?=$piece->path;?>">ici</a></td>
+                <?php if(   !empty($this->users[0]->findByUserId($piece->id_user) )      ): ?>
 
+                <td><?= $this->users[0]->findByUserId($piece->id_user)->nom ?></td>
+
+                <?php else: ?>
+                    <td>default user </td>
+                <?php endif;?>
                 <td>
-                    <a href="<?=PROOT?>home/edit/<?=$client->id_user?>" class="btn btn-info btn-xs">
+                    <a href="<?=PROOT?>" class="btn btn-info btn-xs">
                         <i class="glyphicon glyphicon-pencil"></i> Edit
                     </a>
-                    <a href="<?=PROOT?>home/delete/<?=$client->id_user?>" class="btn btn-danger btn-xs" onclick="if(!confirm('Are you sure?')){return false;}">
+                    <a href="<?=PROOT?>" class="btn btn-danger btn-xs" onclick="if(!confirm('Are you sure?')){return false;}">
                         <i class="glyphicon glyphicon-remove"></i> Delete
                     </a>
                 </td>

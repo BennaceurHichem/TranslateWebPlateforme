@@ -27,32 +27,34 @@ use App\Models\Users;
 
         <div class="col"  style="vertical-align: center;margin-right: auto;margin-left: auto">
 
-                <div>
-                    <h1>Devis numeros #<?php echo $this->devis[0]->id_devis?></h1>
+            <div>
+                <h1>Devis numeros #<?php echo $this->devis[0]->id_devis?></h1>
 
-                </div>
-                    <div>
-                        <h4><b>Client :</b><?php echo $this->devis[0]->nom." ".$this->devis[0]->prenom ?> </h4>
-                        <h4><b>Type traduction :</b><?php echo $this->devis[0]->type_traduction ?> </h4>
-                        <h4><b>Langugae source :</b><?php echo $this->devis[0]->lang_src ?> </h4>
-                        <h4><b>Language Destination:</b><?php echo $this->devis[0]->lang_dest ?> </h4>
-                        <h4><b>Commentaires :</b><?php echo $this->devis[0]->commentaires ?> </h4>
-
-
+            </div>
+            <div>
+                <h4><b>Client :</b><?php echo $this->devis[0]->nom." ".$this->devis[0]->prenom ?> </h4>
+                <h4><b>Type traduction :</b><?php echo $this->devis[0]->type_traduction ?> </h4>
+                <h4><b>Langugae source :</b><?php echo $this->devis[0]->lang_src ?> </h4>
+                <h4><b>Language Destination:</b><?php echo $this->devis[0]->lang_dest ?> </h4>
+                <h4><b>Commentaires :</b><?php echo $this->devis[0]->commentaires ?> </h4>
 
 
 
 
-                    </div>
+
+
+            </div>
 
             <?= FH::displayErrors($this->displayErrors) ?>
+
+            <h1>Le Prix proposè par le traducteur est  : <?= $this->devis[0]->prix?></h1>
+
             <form method="post" >
 
-                <h4>Prix:</h4><?= FH::inputBlock('text','','prix',$this->devis[0]->prix,['class'=>'form-control col-lg-1 ' ],['class'=>'']) ?>
 
 
 
-                <?= FH::submitBlock('Accepter', ['class'=>'btn btn-outline-default btn-rounded waves-effect btn-sm'],['class'=>''])?>
+                <?= FH::submitBlock('Accepter ce prix', ['class'=>'btn btn-outline-default btn-rounded waves-effect btn-sm'],['class'=>''])?>
 
 
 
@@ -61,11 +63,11 @@ use App\Models\Users;
             <form  method="post" >
 
 
-            <div class="form-group">
-                <input type="hidden" id="refus" name="refus">
-                <input type="submit" value="Refuser" class="btn btn-outline-danger btn-rounded waves-effect btn-sm" onclick="if(!confirm('Vous êtes sur ?')){return false;}">
+                <div class="form-group">
+                    <input type="hidden" id="refus" name="refus">
+                    <input type="submit" value="Refuser" class="btn btn-outline-danger btn-rounded waves-effect btn-sm" onclick="if(!confirm('Vous êtes sur ?')){return false;}">
 
-            </div>
+                </div>
 
             </form>
 

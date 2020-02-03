@@ -7,6 +7,13 @@ use Core\H;
 
 ?>
 
+<?php $this->start('head');?>
+    <!-- bootstrap tables  -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+<?php $this->end(); ?>
+
+he
 <?php $this->start('body');?>
 
 

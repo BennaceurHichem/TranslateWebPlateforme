@@ -6,7 +6,8 @@ $menu = Router::getMenu('menu_acl');
 $currentPage = H::currentPage();
 ?>
 
-
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
 
 <nav class="navbar navbar-expand-lg  navbar-light bg-light">
     <a class="navbar-brand" href="<?=PROOT?>home"><?=MENU_MARK?></a>

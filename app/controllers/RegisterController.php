@@ -124,20 +124,7 @@ class RegisterController extends Controller {
 
   public function adminAction(){
 
-  /*    $username ="";
-      $password="";
-      $errors=  [];
 
-        if($username==="admin" && $password==="admin"){
-            H::dnd("dkhele win lazem");
-            Router::redirect('register/login');
-        }else{
-            $errors ="Vous n'êtes pas un admin";
-        }
-
-      $this->view->displayErrors  = $errors;
-      $this->view->render('register/admin');
-  */
       $loginModel = new Login();
 
       //if the request is Post request

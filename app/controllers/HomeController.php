@@ -43,9 +43,10 @@
 
         //traitement de devis
         $devis = new Devis();
+        $piece_jointe  = new PieceJointe();
 
-
-
+        $user = new Users();
+        $users =$user->findAll();
         if($this->request->isPost()) {
 
             $devis->nom = Users::currentUser()->nom;
@@ -60,17 +61,15 @@
              * TRAITEMTN DES VALEURS NULL
              *
              */
-            // $devis->type_traduction = $_REQUEST['type_traduction'];
-            //$devis->lang_src = $_REQUEST['lang_src'];
-            //$devis->lang_dest = $_REQUEST['lang_dest'];
+
             if(!isset($_REQUEST['type_traduction'])){
                 $_REQUEST['type_traduction'] = "general";
             }
             if(!isset($_REQUEST['lang_src'])){
-                $_REQUEST['type_traduction'] = "Arabe";
+                $_REQUEST['lang_src'] = "Arabe";
             }
             if(!isset($_REQUEST['lang_dest'])){
-                $_REQUEST['type_traduction'] = "Francais";
+                $_REQUEST['lang_src'] = "Francais";
             }
             if(!isset($_REQUEST["commentaires"])){
                 $_REQUEST["commentaires"]="";
@@ -80,6 +79,7 @@
                 $_REQUEST['est_assermente'] = "0";
 
             }
+
 
 
             /*
@@ -119,8 +119,7 @@
 
                 }else{
 
-                    print_r($errors);
-
+                    $piece_jointe->addErrorMessage('path','veuillez ajouter votre fichier devis  ');
                 }
             }
 
@@ -136,43 +135,49 @@
 
 
             //set piece jointe values
-            $piece_jointe  = new PieceJointe();
-            //Remplissage de la piece jointe
 
+            //Remplissage de la piece jointe
 
             $piece_jointe->type = "devis";
             $piece_jointe->description = "c'est un devis d'un client";
             $piece_jointe->id_user = Users::currentUser()->id_user;
             $piece_jointe->path=$dest;
-
+            /*
+                     *   * FIN TRAITMENT DE PIECE_JOINTE
+                     *
+                             */
             $devis->assign($this->request->get());
 
             //Sauvegarder le chemin de devis
             $devis->path = $dest;
             $devis->id_devis = $devis->findLastIdDevis()+1;
+            //s'il n'a pas d'erreur inserer devis et pièce jointe
+            if(empty($piece_jointe->getErrorMessages())){
+
+                if($devis->saveNew()){
+
+                    $_SESSION['id_devis'] = $devis->findLastIdDevis();
+                    $_SESSION['devis_path']=$dest;
+
+                    //Insertion piece jointe devis DANS LA TABLE piece_jointe
+
+                    if(!$piece_jointe->save()){
+                        Router::redirect('home');
+                    }
 
 
-            if($devis->saveNew()){
 
-                $_SESSION['id_devis'] = $devis->findLastIdDevis();
-                $_SESSION['devis_path']=$dest;
-
-                //Insertion piece jointe devis
-                if(!$piece_jointe->save()){
-                    Router::redirect('home');
+                    Router::redirect('home/listetraddevis');
                 }
-
-
-
-                Router::redirect('home/listetraddevis');
             }
+
 
 
         }
 
-
+        $this->view->users = $users;
         $this->view->devis = $devis;
-        $this->view->displayErrors = $devis->getErrorMessages();
+        $this->view->displayErrors = $piece_jointe->getErrorMessages();
 
 
         $this->view->render('home/index');
@@ -492,6 +497,24 @@
 
       }
 
+      public function listePieceJointeAction(){
+
+          $piece = new PieceJointe();
+          $pieces_jointes =$piece->getAllPieceJointe();
+          $user = new Users();
+          $users =$user->findAll();
+
+
+
+
+
+          $this->view->piece_jointes = $pieces_jointes;
+          $this->view->users = $users;
+          $this->view->render('home/listePieceJointe');
+
+
+      }
+
       public function alldevisAction(){
 
             $devis = new Devis();
@@ -609,6 +632,107 @@
         }
 
 
+      public function posetraductionAction($id){
 
+          $devis = new Devis();
+          $currentDevis = $devis->findByIdDevis($id);
+
+
+
+          if($this->request->isPost()){
+
+
+              //si le formulaire de refus qui a ete envoyee à l'aide de l'input refus, changer l'etat vers abondonne
+
+              if(array_key_exists("refus",$_REQUEST)){
+                  $nouvelEtat = "abandonne";
+                  $currentDevis[0]->changeEtat($currentDevis[0]->id_devis,$nouvelEtat);
+
+
+
+              }
+              else{
+                  //si le fromaulaire d'acceptance qui a ete envoyer
+
+                  //traitement des erreurs
+                  if(empty($_REQUEST['prix']))
+                  {
+                      $devis->addErrorMessage('prix','veuillez remplire votre prix ');
+                  }elseif(!is_numeric($_REQUEST['prix'])){
+                      $devis->addErrorMessage('prix','Le prix doit être des chiffres ');
+                  }else{
+
+                      //chnagement d'etat de devis et insertion de prix
+                      $prix = $_REQUEST['prix'];
+                      $currentDevis[0]->insertPrix($currentDevis[0]->id_devis,(int)$prix);
+                      $nouvelEtat = "traduction_fait";
+                      $currentDevis[0]->changeEtat($currentDevis[0]->id_devis,$nouvelEtat);
+
+                      Router::redirect('home/index');
+
+                  }
+
+
+              }
+
+
+
+
+
+
+          }
+
+
+          $this->view->devis = $currentDevis;
+          $this->view->displayErrors = $devis->getErrorMessages();
+          $this->view->render('home/detailledevis');
+
+      }
+
+      public function acceptedevisAction($id){
+
+          $devis = new Devis();
+          $currentDevis = $devis->findByIdDevis($id);
+
+
+
+          if($this->request->isPost()){
+
+
+              //si le formulaire de refus qui a ete envoyee à l'aide de l'input refus, changer l'etat vers abondonne
+
+              if(array_key_exists("refus",$_REQUEST)){
+                  $nouvelEtat = "abandonne";
+                  $currentDevis[0]->changeEtat($currentDevis[0]->id_devis,$nouvelEtat);
+
+
+
+              }
+              else{
+                  //si le fromaulaire d'acceptance qui a ete envoyer
+
+                      $nouvelEtat = "client-accepte";
+                      $currentDevis[0]->changeEtat($currentDevis[0]->id_devis,$nouvelEtat);
+
+                      Router::redirect('home/index');
+
+
+
+
+              }
+
+
+
+
+
+
+          }
+
+
+          $this->view->devis = $currentDevis;
+          $this->view->displayErrors = $devis->getErrorMessages();
+          $this->view->render('home/acceptedevis');
+
+      }
 
   }

@@ -5,6 +5,11 @@ use App\Models\Users;
 use Core\H;
 
 ?>
+<?php $this->start('head');?>
+    <!-- bootstrap tables  -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+<?php $this->end(); ?>
 
 <?php $this->start('body');?>
 
@@ -17,15 +22,21 @@ use Core\H;
     <h2 class="text-center">Liste des devis</h2>
 
 
-    <table class="table table-striped table-condensed table-bordered table-hover">
+    <table class="table table-striped table-condensed table-bordered table-hover"
+           data-show-search-button="true"
+           data-page-size="5"
+           data-toggle="table"
+           data-pagination="true"
+           data-search="true"
+    >
         <thead>
-        <th>id</th>
-        <th>client</th>
-        <th>Traducteur</th>
-        <th>Type Traduction</th>
-        <th>Language source</th>
-        <th>Language destination</th>
-        <th>ètat devis </th>
+        <th data-sortable="true">id</th>
+        <th data-sortable="true">client</th>
+        <th data-sortable="true">Traducteur</th>
+        <th data-sortable="true">Type Traduction</th>
+        <th data-sortable="true">Language source</th>
+        <th data-sortable="true">Language destination</th>
+        <th data-sortable="true">ètat devis </th>
 
 
 

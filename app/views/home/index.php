@@ -334,6 +334,8 @@ use App\Models\Clientt;
 
 
         <?php if(!Users::currentUser()->estTrad && Users::currentUser()->nom !="admin" ): ?>
+
+
         <div class="form-style-10 ">
             <h1>Demande de devis de traduction<span>demander votre devis facilement en remplissant ce
                             formulaire</span></h1>
@@ -348,7 +350,7 @@ use App\Models\Clientt;
 
 
                     <h4>Dèposer le fichier à traduire: </h4><input type="file" name="devis" /><br><br>
-
+                    <?= FH::displayErrors($this->displayErrors) ?>
                     <h4>Choisir Le type de traduction</h4>
                     <select name="type_traduction">
                         <option value="general" selected="selected">general</option>
@@ -443,7 +445,11 @@ use App\Models\Clientt;
                         <i class="glyphicon glyphicon-pencil"></i> Accepter/Refuser
                     </a>
                          <?php endif; ?>
-
+                    <?php if($devis->etat==="client-accepte"): ?>
+                        <a href="<?=PROOT?>home/detailledevis/<?=$devis->id_devis?>" class="btn btn-success btn-xs" style="pointer-events: none;">
+                            <i class="fas fa-lightbulb"></i> proposition acceptè par client
+                        </a>
+                    <?php endif; ?>
                     <?php if($devis->etat==="acceptee"): ?>
                         <a href="#" class="btn btn-success btn-xs btn-success" style="pointer-events: none;">
                             <i class="fas fa-check"></i> Acceptèe
@@ -452,7 +458,7 @@ use App\Models\Clientt;
 
                     <?php if($devis->etat==="abandonne"): ?>
                         <a href="#" style="pointer-events: none;" class="btn btn-danger btn-xs btn-danger">
-                            <i class="fa fa-close"></i>Refusée
+                            <i class="fa fa-close"></i>Refusée par vous
                         </a>
                     <?php endif; ?>
                 </td>
@@ -471,6 +477,13 @@ use App\Models\Clientt;
             $client->id_client = Users::currentUser()->id_user;
 
             $deviss = $client->getAllDevis( $client->id_client);
+
+
+
+
+
+
+
             ?>
 
             <center>
@@ -484,37 +497,51 @@ use App\Models\Clientt;
                 <th>Type traduction</th>
                 <th>Language source </th>
                 <th>Language destination </th>
-
-
                 <th>ètat de devis  </th>
 
 
                 </thead>
                 <tbody>
-                <?php foreach($deviss as $devis): ?>
+                <?php foreach($deviss as $devis):
+                    $user = new Users();
+                    $userrr = $user->findByUserId($devis->id_traducteur);
+
+                    ?>
+                    <?php if ($devis->id_traducteur !=0 && $devis->id_traducteur!=null): ?>
+
                     <tr>
                      
 
                         <td><?= $devis->type_traduction;?></td>
-
                         <td><?= $devis->lang_src;?></td>
                         <td><?= $devis->lang_dest;?></td>
+                        <?php if(   !empty($this->users[0]->findByUserId($devis->id_traducteur) ) ) : ?>
+
+                            <td><?= $this->users[0]->findByUserId($devis->id_traducteur)->nom ?></td>
+
+                        <?php else: ?>
+                            <td>default user </td>
+                        <?php endif;?>
                         <td>
                             <?php if($devis->etat==="pas-encore-demarre"): ?>
                                 <a href="#" class="btn btn-info btn-xs" style="pointer-events: none;">
                                     <i class="fas fa-clock"></i> Pas encore traitèe
                                 </a>
                             <?php endif; ?>
-
+                            <?php if($devis->etat==="client-accepte"): ?>
+                                <a href="<?=PROOT?>home/detailledevis/<?=$devis->id_devis?>" class="btn btn-success btn-xs" style="pointer-events: none;">
+                                    <i class="fas fa-lightbulb"></i> en cours de traduction
+                                </a>
+                            <?php endif; ?>
                             <?php if($devis->etat==="acceptee"): ?>
-                                <a href="#" class="btn btn-success btn-xs btn-success" style="pointer-events: none;">
+                                <a href="<?=PROOT?>home/acceptedevis/<?=$devis->id_devis?>" class="btn btn-success btn-xs btn-success" >
                                     <i class="fas fa-check"></i> Acceptèe
                                 </a>
                             <?php endif; ?>
 
                             <?php if($devis->etat==="abandonne"): ?>
                                 <a href="#" style="pointer-events: none;" class="btn btn-danger btn-xs btn-danger">
-                                    <i class="fa fa-close"></i>Refusée
+                                    <i class="fa fa-close"></i>Refusée par le traducteur
                                 </a>
                             <?php endif; ?>
 
@@ -526,6 +553,7 @@ use App\Models\Clientt;
 
 
                     </tr>
+                         <?php endif; ?>
                 <?php endforeach; ?>
                 </tbody>
             </table>

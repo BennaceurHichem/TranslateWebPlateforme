@@ -55,4 +55,11 @@ public $id_piece_jointe,$type,$path,$description,$id_user;
         return $this->_db->insert($this->_table, $fields);
     }
 
+        public function getAllPieceJointe(){
+
+
+                return $this->find();
+
+        }
+
 }
